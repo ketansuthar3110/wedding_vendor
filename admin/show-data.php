@@ -18,7 +18,7 @@ FROM
         ON (`tbl_category`.`category_id` = `tbl_vendormaster`.`category_id`)
     INNER JOIN `tbl_area` 
         ON (`tbl_area`.`area_id` = `tbl_vendormaster`.`area_id`);";
-$q = mysqli_query($connection, $sql) or die (mysqli_error($connection));
+$q  = mysqli_query($connection, $sql) or die (mysqli_error($connection));
 
 echo "<table border='1'>";
 echo "<th>Vendor ID</th>";
