@@ -1,7 +1,7 @@
 <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="index3.php"><img src="assets/images/icon/logo.png" alt="logo"></a>
+                    <a href="index3.php"><img src="assets/images/icon/logo.jpg" alt="logo"></a>
                 </div>
             </div>
             <div class="main-menu">
@@ -12,7 +12,7 @@
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
                                 <ul class="collapse">
                                     
-                                    <li><a href="index3.php">SEO dashboard</a></li>
+                                    <li><a href="index3.php">Admin</a></li>
                                 </ul>
                             </li>
                             

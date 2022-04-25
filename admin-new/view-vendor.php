@@ -2,6 +2,7 @@
 require './class/connection.php';
 $dmsg = "";
 ?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
