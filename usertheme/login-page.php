@@ -64,135 +64,86 @@ if ($_POST) {
 
     <body>
         <div class="collapse" id="searcharea">
-            <!-- top search -->
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
-                <span class="input-group-btn">
-                    <button class="btn btn-primary" type="button">Search</button>
-                </span>
+        <!-- top search -->
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+              <button class="btn btn-primary" type="button">Search</button>
+          </span>
+        </div>
+    </div>
+    <!-- /.top search -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 top-message">
+                    <p>Welcome to Wedding Vendor</p>
+                    
+                </div>
+                <div class="col-md-6 top-links">
+                    <ul class="listnone">
+                        <li><a href="faq.php"> Help </a></li>
+                        <li><a href="pricing-plan.php">Pricing</a></li>
+                        <li><a href="signup-couple.php" class=" ">I m couple</a></li>
+                        <li><a href="./vendor-panel/pages/login-vendor.php">Are you vendor?</a></li>
+                        
+                        <li>
+                            <a role="button" data-toggle="collapse" href="#searcharea" aria-expanded="false" aria-controls="searcharea"> <i class="fa fa-search"></i> </a>
+                        
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <!-- /.top search -->
-        <div class="top-bar">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 top-message">
-                        <p>Hi Welcome to Wedding Vendor.</p>
+    </div>
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-12 logo">
+                    <div class="navbar-brand">
+                        <a href="index.php"><img src="images/logo.png" alt="Wedding Vendors" class="img-responsive"></a>
                     </div>
-                    <div class="col-md-6 top-links">
-                        <ul class="listnone">
-                            <li><a href="faq.html"> Help </a></li>
-                            <li><a href="pricing-plan.html">Pricing</a></li>
-                            <li><a href="signup-couple.html" class=" ">I m couple</a></li>
-                            <li><a href="signup-vendor.html">Are you vendor?</a></li>
-                            <li><a href="login-page.php">Log in</a></li>
-
-                            <li>
-                                <a role="button" data-toggle="collapse" href="#searcharea" aria-expanded="false" aria-controls="searcharea"> <i class="fa fa-search"></i> </a>
+                </div>
+                <div class="col-md-9 col-sm-12">
+                    <div class="navigation" id="navigation">
+                        <ul>
+                            <li class="active"><a href="index.php">Home</a>
+                              
+                            </li> <li class=""><a href="about-us.php">About Us</a>
+                              
                             </li>
+                            </li> <li class=""><a href="contact-us.php">Contact Us</a>
+                              
+                            </li>
+                            <li><a href="vendor-listing-sidebar.php">Vendor</a>
+                                <ul>
+                                  
+                                    <?php
+                                                   $selectcatrow = mysqli_query($connection, "select * from tbl_category") or die(mysqli_error($connection));
+                                                   while($data = mysqli_fetch_array($selectcatrow))
+                                                   {
+                                                   echo "<li><a href='vendor-listing-sidebar.php?cid={$data['category_id']}'>{$data['category_name']}</a></li>";
+                                                   }
+                                                   ?>
+                                </ul>
+                            </li>
+                            <li><a href="#">Account</a>
+                                <ul>
+                                    <li><a href="view-booking.php" title="Home" class="animsition-link">View order</a></li>
+                                    <li><a href="login-page.php" title="Home" class="animsition-link">Login</a></li>
+                                     <li><a href="change-password-user.php" title="Home" class="animsition-link">Change Password</a></li>
+                                      <li><a href="logout.php" title="Home" class="animsition-link">Logout</a></li>
+                                </ul>
+                            </li>
+                            
+                            
                         </ul>
                     </div>
+                
                 </div>
             </div>
         </div>
-        <div class="header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-sm-12 logo">
-                        <div class="navbar-brand">
-                            <a href="index.html"><img src="images/logo.png" alt="Wedding Vendors" class="img-responsive"></a>
-                        </div>
-                    </div>
-                    <div class="col-md-9 col-sm-12">
-                        <div class="navigation" id="navigation">
-                            <ul>
-                                <li class="active"><a href="index.html">Home</a>
-                                    <ul>
-                                        <li><a href="index.html" title="Home" class="animsition-link">Home</a></li>
-                                        <li><a href="index-2.html" title="Home v.2" class="animsition-link">Home v.2</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Listing</a>
-                                    <ul>
-                                        <li><a href="vendor-listing-row-map.html" title="Home" class="animsition-link">List / Half Map</a></li>
-                                        <li><a href="vendor-listing-sidebar.html" title="Home" class="animsition-link">List / Sidebar Left</a></li>
-                                        <li><a href="vendor-listing-no-sidebar.html" title="Home" class="animsition-link">List / No Sidebar</a></li>
-                                        <li><a href="vendor-listing-top-map.html" title="Home" class="animsition-link">Top Map / List</a></li>
-                                        <li><a href="vendor-list-4-colmun.html" title="Home" class="animsition-link">4 Column List</a></li>
-                                        <li><a href="vendor-list-3-colmun.html" title="Home" class="animsition-link">3 Column List</a></li>
-                                        <li><a href="vendor-list-horizontal.html" title="Home" class="animsition-link">Horizontal List </a></li>
-                                        <li><a href="vendor-list-new.html" title="Home" class="animsition-link">List Variations </a></li>
-                                        <li><a href="vendor-listing-bubba.html">Bubba Style Listing</a></li>
-                                        <li><a href="vendor-listing-ocean.html">Ocean Style Listing</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="vendor-details.html">Vendor</a>
-                                    <ul>
-                                        <li><a href="vendor-details.html">Vendor Simple</a></li>
-                                        <li><a href="vendor-details-tabbed.html">Vendor Tabbed</a></li>
-                                        <li><a href="vendor-profile.html">Vendor Profile</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="venue-listing.html" title="Home" class="animsition-link">Suppliers</a>
-                                    <ul>
-                                        <li><a href="venue-listing.html">Venue List</a></li>
-                                        <li><a href="photography-listing.html">Photographer List</a></li>
-                                        <li><a href="dresses-listing.html">Dresses List</a></li>
-                                        <li><a href="florist-listing.html">Florist List</a></li>
-                                        <li><a href="videography-listing.html">Videography List</a></li>
-                                        <li><a href="cake-listing.html">Cake List</a></li>
-                                        <li><a href="music-listing.html">Music List</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Planning Tools</a>
-                                    <ul>
-                                        <li><a href="planning-to-do.html">To Do List</a></li>
-                                        <li><a href="planning-budget.html">Budget Planner</a></li>
-                                        <li><a href="couple-landing-page.html">Couple Signup (LP)</a></li>
-                                        <li><a href="couple-dashboard.html">Couple Admin</a></li>
-                                        <li><a href="dashboard-vendor.html">Vendor Admin</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Features</a>
-                                    <ul>
-                                        <li><a href="#">Blog</a>
-                                            <ul>
-                                                <li><a href="blog.html">Blog Listing</a></li>
-                                                <li><a href="blog-single.html">Blog Single</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="about-us.html">About us</a></li>
-                                        <li><a href="contact-us.html">Contact us</a></li>
-                                        <li><a href="pricing-plan.html">Pricing Table</a></li>
-                                        <li><a href="faq.html">FAQ's</a></li>
-                                        <li><a href="404-error.html">404 Error</a></li>
-                                        <li><a href="#">Shortcodes</a>
-                                            <ul>
-                                                <li><a href="shortcode-columns.html">Column</a></li>
-                                                <li><a href="shortcode-accordion.html">Accordion</a></li>
-                                                <li><a href="shortcode-tabs.html">Tabs</a></li>
-                                                <li><a href="shortcode-pagination.html">Paginations</a></li>
-                                                <li><a href="shortcode-typography.html">Typography</a></li>
-                                                <li><a href="shortcode-accordion.html">Accordion</a></li>
-                                                <li><a href="shordcods-alerts.html">Alert</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="wedding-guideline.html">Template Guideline</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Real Weddings</a>
-                                    <ul>
-                                        <li><a href="real-wedding-listing.html">Listing</a></li>
-                                        <li><a href="real-wedding-single.html">Real Wedding Single</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
         <div class="tp-page-head">
             <!-- page header -->
             <div class="container">
@@ -238,7 +189,7 @@ if ($_POST) {
                                 <!-- Text input-->
                                 <div class="form-group">
                                     <label class="control-label" for="password">Password<span class="required">*</span></label>
-                                    <input id="password" name="password" type="text" placeholder="Password" class="form-control input-md" required>
+                                    <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" required>
                                 </div>
 
                                 <!-- Button -->

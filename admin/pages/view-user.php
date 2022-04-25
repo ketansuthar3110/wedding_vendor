@@ -1,5 +1,5 @@
 <?php
-require '../class/connection.php';
+require './class/connection.php';
 $dmsg = "";
 ?>
 <!doctype html>
@@ -9,7 +9,7 @@ $dmsg = "";
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+        <title>Wedding Vendor view-users</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
         <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
@@ -56,7 +56,8 @@ $dmsg = "";
                                                 <th scope="col">Area-name</th>
                                                 <th scope="col">Address</th>
                                               
-                                                <th scope="col">Action</th>
+                                                <th scope="col">Delete</th>
+                                                <th scope="col">Update</th>
 
                                             </tr>
                                         </thead>
@@ -66,10 +67,12 @@ $dmsg = "";
                                             $delid = $_GET['did'];
                                             $dq = mysqli_query($connection, "delete from tbl_user where user_id = '{$delid}'") or die(mysqli_error($connection));
                                             if ($dq) {
-                                                $dmsg = '<div class="alert alert-success" role="alert">
+                                                $dmsg = '<div class="alert alert-danger" role="alert">
                          Record Deleted
                         </div>';
                                             }
+                                            
+                                            echo $dmsg;
                                         }
                                         $sql = "SELECT
                                                         `tbl_user`.`user_id`
@@ -98,7 +101,8 @@ $dmsg = "";
                                             echo "<td>{$data['area_name']}</td>";
                                             echo "<td>{$data['user_address']}</td>";
                                             
-                                            echo "<td><button><a href='editdata.php?eid=$data[0]'>edit</a> </button>&<button> <a href='view-user.php?did=$data[0]'>Delete</a></button></td>";
+                                            echo "<td><button><a style='color:red;' href='view-user.php?did=$data[0]'>Delete</a></button></td>";
+                                             echo "<td><button><a style='color:blue;' href='edit_user.php?uid=$data[0]'>Update</a></button></td>";
                                             echo "</tr>";
                                         }
                                        
@@ -112,9 +116,7 @@ $dmsg = "";
                         <!-- end striped table -->
                         <!-- ============================================================== -->
                     </div>
-                              <?php
-                                                                                    echo $dmsg;
-                                                                                        ?>
+                             
 
                 </div>
                 <!-- ============================================================== -->

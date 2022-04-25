@@ -10,7 +10,7 @@ $dmsg = "";
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+        <title>View Booking Vendor</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
         <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
@@ -43,7 +43,7 @@ $dmsg = "";
                         </div>
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="card">
-                                <h5 class="card-header">Booking Table</h5>
+                                <h5 class="card-header">Booking Data</h5>
                                 <div class="card-body">
                                     <table class="table table-striped">
                                         <thead>
@@ -55,8 +55,7 @@ $dmsg = "";
                                                 <th scope="col">Price</th>
                                                 <th scope="col">Status</th>
 
-                                                <th scope="col">Action</th>
-
+                                               
                                             </tr>
                                         </thead>
                                         <?php
@@ -70,19 +69,20 @@ $dmsg = "";
                                             }
                                         }
                                         $sql = "SELECT
-                                                        `tbl_booking`.`booking_id`
-                                                        , `tbl_booking`.`booking_date`
-                                                        , `tbl_user`.`user_name`
-                                                        , `tbl_vendormaster`.`vendor_name`
-                                                        , `tbl_booking`.`booking_price`
-                                                        , `tbl_booking`.`booking_status`
-                                                    FROM
-                                                        `tbl_user`
-                                                        INNER JOIN `tbl_booking` 
-                                                            ON (`tbl_user`.`user_id` = `tbl_booking`.`user_id`)
-                                                        INNER JOIN `tbl_vendormaster` 
-                                                            ON (`tbl_vendormaster`.`vendor_id` = `tbl_booking`.`vendor_id`)
-                                                    ORDER BY `tbl_booking`.`booking_id` ASC;";
+                            `tbl_booking`.`booking_id`
+                            , `tbl_booking`.`booking_date`
+                            , `tbl_user`.`user_name`
+                            , `tbl_vendormaster`.`vendor_name`
+                            , `tbl_booking`.`booking_price`
+                            , `tbl_booking`.`booking_status`
+                            FROM
+                            `tbl_user`
+                            INNER JOIN `tbl_booking`
+                            ON(`tbl_user`.`user_id` = `tbl_booking`.`user_id`)
+                                            INNER JOIN `tbl_vendormaster`
+                                            ON(`tbl_vendormaster`.`vendor_id` = `tbl_booking`.`vendor_id`)
+                                            WHERE(`tbl_vendormaster`.`vendor_id` = '{$_SESSION['vendorid']}')
+                                            ORDER BY `tbl_booking`.`booking_id` ASC;";
                                         
                                         $f =mysqli_query($connection, $sql) or die(mysqli_error($connection));
                                                 while ($data = mysqli_fetch_array($f)) {
@@ -94,7 +94,6 @@ $dmsg = "";
                                             echo "<td>{$data['booking_price']}</td>";
                                             echo "<td>{$data['booking_status']}</td>";
 
-                                            echo "<td><button><a href='editdata.php?eid=$data[0]'>edit</a> </button>&<button> <a href='view-booking.php?did=$data[0]'>Delete</a></button></td>";
                                             echo "</tr>";
                                         }
                                         ?>
@@ -115,9 +114,7 @@ $dmsg = "";
                 <!-- ============================================================== -->
                 <!-- footer -->
                 <!-- ============================================================== -->
-                <?php
-                    include './theme/footer.php';
-                ?>
+            
                 <!-- ============================================================== -->
                 <!-- end footer -->
                 <!-- ============================================================== -->

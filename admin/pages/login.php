@@ -1,7 +1,7 @@
 <?php
 session_start();
 $msg = "";
-require '../class/connection.php';
+require './class/connection.php';
 
 if ($_POST) {
     $email = $_POST['email'];
@@ -12,8 +12,8 @@ if ($_POST) {
     $count = mysqli_num_rows($select);
     $row = mysqli_fetch_array($select);
     if ($count > 0) {
-        $_SESSION['userid'] = $row['admin_id'];
-        $_SESSION['username'] = $row['admin_name'];
+        $_SESSION['adminid'] = $row['admin_id'];
+        $_SESSION['adname'] = $row['admin_name'];
         header("location:master.php");
     } else {
          $msg = '<div class="alert alert-danger" role="alert">
@@ -75,7 +75,7 @@ if ($_POST) {
     <!-- ============================================================== -->
     <div class="splash-container">
         <div class="card ">
-            <div class="card-header text-center"><a href="../index.html"><img class="logo-img" src="../assets/images/logo.png" alt="logo"></a><span class="splash-description">Please enter your user information.</span></div>
+            <div class="card-header text-center"><a href="../index.html"><img style="width: 200px;"class="logo-img" src="../assets/images/logo.jpg" alt="logo"></a><span class="splash-description">Please enter Admin information.</span></div>
             <div class="card-body">
                 <?php
                 echo $msg;

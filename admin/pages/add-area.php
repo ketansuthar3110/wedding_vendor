@@ -1,5 +1,5 @@
 <?php
-require '../class/connection.php';
+require './class/connection.php';
 $msg = "";
 if ($_POST) {
 
@@ -22,7 +22,7 @@ if ($_POST) {
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+    <title>Wedding Vendor Area</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
     <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
@@ -121,9 +121,15 @@ if ($_POST) {
                                             </div>   
                                             
                                             <div class="form-group"> 
-                                            <button type="submit" class="btn btn-default">Add Record</button> 
-                                            <button type="reset" class="btn btn-default">Reset</button>
-                                            <button type="button" class="btn btn-default"onclick="window.location = 'view-area.php'">View Record</button> 
+                                            <div class="card-footer">
+                                            <button type="submit" class="btn btn-success btn-sm">
+                                                <i class="fa fa-dot-circle-o"></i> Submit
+                                            </button>
+                                            <button type="reset" class="btn btn-danger btn-sm">
+                                                <i class="fa fa-ban"></i> Reset
+                                            </button>
+                                            <button type="button" class="btn btn-primary btn-sm" onclick="window.location = 'view-area.php'">View Record</button>
+                                        </div>
                                         </div>
                                         </form>
                                     </div>
@@ -138,9 +144,7 @@ if ($_POST) {
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <?php
-                                include '../pages/theme/footer.php';
-                                    ?>
+            
             <!-- ============================================================== -->
             <!-- end footer -->
             <!-- ============================================================== -->

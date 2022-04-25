@@ -1,5 +1,5 @@
 <?php
-require '../class/connection.php';
+require './class/connection.php';
 $msgs = "";
 $msgn="";
 $msg3 = "";
@@ -20,9 +20,9 @@ if($_POST)
 //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function
 
-
+        
 //Load Composer's autoloader
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
@@ -74,7 +74,7 @@ $mail->Body    = "HI $email <b>Your password is</b>{$row['admin_password']}";
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+    <title>Forgot-Password</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
     <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
@@ -117,7 +117,7 @@ $mail->Body    = "HI $email <b>Your password is</b>{$row['admin_password']}";
     <!-- ============================================================== -->
     <div class="splash-container">
         <div class="card">
-            <div class="card-header text-center"><img class="logo-img" src="../assets/images/logo.png" alt="logo"><span class="splash-description">Please enter your user information.</span></div>
+            <div class="card-header text-center"><img style="width:170px;" class="logo-img" src="../assets/images/logo.jpg" alt="logo"><span class="splash-description">Please enter your user information.</span></div>
             <div class="card-body">
                 <form method="post" id="myform">
                     <?php

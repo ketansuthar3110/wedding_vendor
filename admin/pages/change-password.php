@@ -1,7 +1,7 @@
 <?php
 session_start();
 $msg = "";
-require '../class/connection.php';
+require './class/connection.php';
 
 if ($_POST) {
 
@@ -108,13 +108,7 @@ include '../pages/theme/header.php';
                                         <h2 class="pageheader-title">Change Password </h2>
                                         <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
                                         <div class="page-breadcrumb">
-                                            <nav aria-label="breadcrumb">
-                                                <ol class="breadcrumb">
-                                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Forms</a></li>
-                                                    <li class="breadcrumb-item active" aria-current="page">Form Elements</li>
-                                                </ol>
-                                            </nav>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -137,20 +131,19 @@ echo $msg;
                                             <div class="form-group">
                                                 <label for="inputPassword">Old Password</label>
 
-                                                <input type="text" name="opass" class="form-control" placeholder="please enter old password" required="true"/>
+                                                <input type="password" name="opass" class="form-control" placeholder="please enter old password" required="true"/>
                                             </div>   
                                             <div class="form-group">
                                                 <label for="inputPassword">New Password</label>
-                                                <input type="text" name="npass" class="form-control" placeholder="please enter new password" required="true"/>
+                                                <input type="password" name="npass" class="form-control" placeholder="please enter new password" required="true"/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword">Confirm Password</label>
-                                                <input type="text" name="cpass" class="form-control" placeholder="please enter confirm password" required="true"/>
+                                                <input type="password" name="cpass" class="form-control" placeholder="please enter confirm password" required="true"/>
                                             </div>
-                                            <div class="form-group"> 
-                                                <button type="submit" class="btn btn-default">Add Record</button> 
-                                                <button type="reset" class="btn btn-default">Reset</button>
-                                                <button type="button" class="btn btn-default"onclick="window.location = 'view-admin.php'">View Record</button> 
+                                            <div class="card-footer"> 
+                                                <button type="submit" class="btn btn-success btn-sm">submit</button> 
+                                                <button type="reset" class="btn btn-danger btn-sm">Reset</button>
                                             </div>
                                         </form>
                                     </div>
@@ -165,9 +158,7 @@ echo $msg;
                     <!-- ============================================================== -->
                     <!-- footer -->
                     <!-- ============================================================== -->
-<?php
-include '../pages/theme/footer.php';
-?>
+
                     <!-- ============================================================== -->
                     <!-- end footer -->
                     <!-- ============================================================== -->

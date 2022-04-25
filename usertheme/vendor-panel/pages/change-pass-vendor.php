@@ -50,7 +50,7 @@ if ($_POST) {
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+        <title>Change Password</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
         <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
@@ -117,13 +117,7 @@ include './theme/sidebar.php';
                                         <h2 class="pageheader-title">Change Password </h2>
                                         <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
                                         <div class="page-breadcrumb">
-                                            <nav aria-label="breadcrumb">
-                                                <ol class="breadcrumb">
-                                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Forms</a></li>
-                                                    <li class="breadcrumb-item active" aria-current="page">Form Elements</li>
-                                                </ol>
-                                            </nav>
+                                          
                                         </div>
                                     </div>
                                 </div>
@@ -146,15 +140,15 @@ echo $msg;
                                             <div class="form-group">
                                                 <label for="inputPassword">Old Password</label>
 
-                                                <input type="text" name="txt1" class="form-control" placeholder="please enter old password" required="true"/>
+                                                <input type="password" name="txt1" class="form-control" placeholder="please enter old password" required="true"/>
                                             </div>   
                                             <div class="form-group">
                                                 <label for="inputPassword">New Password</label>
-                                                <input type="text" name="txt2" class="form-control" placeholder="please enter new password" required="true"/>
+                                                <input type="password" name="txt2" class="form-control" placeholder="please enter new password" required="true"/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword">Confirm Password</label>
-                                                <input type="text" name="txt3" class="form-control" placeholder="please enter confirm password" required="true"/>
+                                                <input type="password" name="txt3" class="form-control" placeholder="please enter confirm password" required="true"/>
                                             </div>
                                             <div class="form-group"> 
                                                 <button type="submit" class="btn btn-default">Change Password</button> 
@@ -172,10 +166,7 @@ echo $msg;
                     </div>
                     <!-- ============================================================== -->
                     <!-- footer -->
-                    <!-- ============================================================== -->
-<?php
-include '../pages/theme/footer.php';
-?>
+
                     <!-- ============================================================== -->
                     <!-- end footer -->
                     <!-- ============================================================== -->

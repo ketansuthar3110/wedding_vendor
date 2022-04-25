@@ -1,5 +1,5 @@
 <?php
-require '../class/connection.php';
+require './class/connection.php';
 $dmsg = "";
 ?>
 <!doctype html>
@@ -9,7 +9,7 @@ $dmsg = "";
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+        <title>Wedding Vendor view-Admin</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
         <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
@@ -40,7 +40,7 @@ $dmsg = "";
                            <div>
                               
                                </div>
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
                             <div class="card">
                                 <h5 class="card-header">Admin Table</h5>
                                 <div class="card-body">
@@ -52,7 +52,8 @@ $dmsg = "";
                                                 <th scope="col">Email</th>
                                                 <th scope="col">Password</th>
                                                
-                                                <th scope="col">Action</th>
+                                                <th scope="col">Delete</th>
+                                                <th scope="col">Update</th>
 
                                             </tr>
                                         </thead>
@@ -76,7 +77,8 @@ $dmsg = "";
                                             echo "<td>{$data['admin_email']}</td>";
                                             echo "<td>{$data['admin_password']}</td>";
                                             
-                                            echo "<td><button><a href='editdata.php?eid=$data[0]'>edit</a> </button>&<button> <a href='view-admin.php?did=$data[0]'>Delete</a></button></td>";
+                                             echo "<td><button><a style='color:red;' href='view-admin.php?did=$data[0]'>Delete</a></button></td>";
+                                             echo "<td><button><a style='color:blue;' href='edit_admin.php?uid=$data[0]'>Update</a></button></td>";
                                             echo "</tr>";
                                         }
                                        
@@ -98,9 +100,7 @@ $dmsg = "";
                 <!-- ============================================================== -->
                 <!-- footer -->
                 <!-- ============================================================== -->
-<?php
-include '../pages/theme/footer.php';
-?>
+
                 <!-- ============================================================== -->
                 <!-- end footer -->
                 <!-- ============================================================== -->

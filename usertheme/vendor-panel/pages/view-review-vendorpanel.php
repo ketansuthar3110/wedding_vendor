@@ -10,7 +10,7 @@ $dmsg = "";
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+        <title>View Review</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
         <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
@@ -55,7 +55,6 @@ $dmsg = "";
                                                 <th scope="col">User-name</th>
 
 
-                                                <th scope="col">Action</th>
 
                                             </tr>
                                         </thead>
@@ -70,18 +69,18 @@ $dmsg = "";
                                             }
                                         }
                                         $sql = "SELECT
-                                                        `tbl_review`.`review_id`
-                                                        , `tbl_review`.`review_date`
-                                                        , `tbl_review`.`review_details`
-                                                        , `tbl_vendormaster`.`vendor_name`
-                                                        , `tbl_user`.`user_name`
-                                                    FROM
-                                                        `tbl_vendormaster`
-                                                        INNER JOIN `tbl_review` 
-                                                            ON (`tbl_vendormaster`.`vendor_id` = `tbl_review`.`vendor_id`)
-                                                        INNER JOIN `tbl_user` 
-                                                            ON (`tbl_user`.`user_id` = `tbl_review`.`user_id`)
-                                                    ORDER BY `tbl_review`.`review_id` ASC;";
+                                                    `tbl_review`.`review_id`
+                                                    , `tbl_review`.`review_date`
+                                                    , `tbl_review`.`review_details`
+                                                    , `tbl_vendormaster`.`vendor_name`
+                                                    , `tbl_user`.`user_name`
+                                                FROM
+                                                    `tbl_vendormaster`
+                                                    INNER JOIN `tbl_review` 
+                                                        ON (`tbl_vendormaster`.`vendor_id` = `tbl_review`.`vendor_id`)
+                                                    INNER JOIN `tbl_user` 
+                                                        ON (`tbl_user`.`user_id` = `tbl_review`.`user_id`)
+                                                WHERE (`tbl_vendormaster`.`vendor_id` ='{$_SESSION['vendorid']}');";
                                         $f = mysqli_query($connection, $sql) or die(mysqli_error($connection));
 
                                         while ($data = mysqli_fetch_array($f)) {
@@ -92,7 +91,6 @@ $dmsg = "";
                                             echo "<td>{$data['vendor_name']}</td>";
                                             echo "<td>{$data['user_name']}</td>";
 
-                                            echo "<td><button><a href='editdata.php?eid=$data[0]'>edit</a> </button>&<button> <a href='view-review.php?did=$data[0]'>Delete</a></button></td>";
                                             echo "</tr>";
                                         }
                                         ?>
@@ -105,17 +103,15 @@ $dmsg = "";
                         <!-- end striped table -->
                         <!-- ============================================================== -->
                     </div>
-<?php
-echo $dmsg;
-?>
+                    <?php
+                    echo $dmsg;
+                    ?>
 
                 </div>
                 <!-- ============================================================== -->
                 <!-- footer -->
                 <!-- ============================================================== -->
-<?php
-include '../pages/theme/footer.php';
-?>
+              
                 <!-- ============================================================== -->
                 <!-- end footer -->
                 <!-- ============================================================== -->

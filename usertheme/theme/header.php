@@ -6,6 +6,7 @@ $database = "db_wedding";
 $connection = mysqli_connect($host, $user , $password, $database);
 session_start();
 
+ 
 if(!isset($_SESSION['userid']))
 {
     header("location:login-page.php");
@@ -77,7 +78,7 @@ if(!isset($_SESSION['userid']))
                             </li>
                             <li><a href="#">Account</a>
                                 <ul>
-                                    <li><a href="#" title="Home" class="animsition-link">View order</a></li>
+                                    <li><a href="view-booking.php" title="Home" class="animsition-link">View order</a></li>
                                     <li><a href="login-page.php" title="Home" class="animsition-link">Login</a></li>
                                      <li><a href="change-password-user.php" title="Home" class="animsition-link">Change Password</a></li>
                                       <li><a href="logout.php" title="Home" class="animsition-link">Logout</a></li>

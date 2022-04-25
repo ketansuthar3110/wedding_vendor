@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5 ft-aboutus">
-                    <h2>Wedding.Vendor</h2>
+                    <h2>Wedding Vendor</h2>
                     <p>At Wedding Vendor our purpose is to help people find great online network connecting wedding suppliers and wedding couples who use those suppliers. <a href="#">Start Find Vendor!</a></p>
                     <a href="#" class="btn btn-default">Find a Vendor</a> </div>
                 <div class="col-md-3 ft-link">
@@ -11,14 +11,13 @@
                     <ul>
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">Contact us</a></li>
-                        <li><a href="#">News</a></li>
-                        <li><a href="#">Career</a></li>
+                       
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms of Use</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4 newsletter">
-                    <h2>Subscribe for Newsletter</h2>
+                    <h2>Get Latest wedding updates</h2>
                     <form>
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Enter E-Mail Address" required>
@@ -47,7 +46,7 @@
         <!-- Tiny footer -->
         <div class="container">
             <div class="row">
-                <div class="col-md-12">Copyright © 2014. All Rights Reserved</div>
+                <div class="col-md-12">Wedding Vendor © 2022. All Rights Reserved</div>
             </div>
         </div>
     </div>

@@ -1,9 +1,10 @@
 <?php
 require './class/connection.php';
 
+
 $vid = $_GET['pid'];
 $vq = mysqli_query($connection, "select * from tbl_vendormaster where vendor_id = {$vid} ") or die(mysqli_error($connection));
-
+$data1= mysqli_fetch_array($vq);
 $count = mysqli_num_rows($vq);
 
 if ($count < 1) {
@@ -12,6 +13,10 @@ if ($count < 1) {
 
 
 $msg = "";
+$msgr="";
+$msgreview="";
+
+
 if ($_POST) {
 
     $date = $_POST['txt1'];
@@ -27,7 +32,9 @@ if ($_POST) {
   Record Inserted
 </div>';
     }
+   
 }
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,6 +66,20 @@ if ($_POST) {
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+        <script src="jquery-3.6.0.js" type="text/javascript"></script>
+        <script src="jquery.validate.js" type="text/javascript"></script>
+  <script>
+            $(document).ready(function()
+            {
+                $("#myform").validate();
+            });
+            
+        </script>
+        <style>
+            .error{
+                color: red;
+            }
+            </style>
     </head>
 
     <body>
@@ -91,14 +112,14 @@ if ($_POST) {
         </div>
         <div class="container venue-header">
             <div class="row venue-head">
-                <div class="col-md-12 title"> <a href="#" class="label-primary">Boutique</a>
-                    <h1>Wedding Venue Title Goes Here</h1>
-                    <p class="location"><i class="fa fa-map-marker"></i>110 Pennington Street, London E1W 2BB</p>
+                <div class="col-md-12 title"> 
+                    <h1><?php echo "{$data1['vendor_name']}"; ?></h1>
+                   
                 </div>
+               
                 <div class="col-md-8 rating-box">
-                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>
                 </div>
-                <div class="col-md-4 venue-action"> <a href="#googleMap" class="btn btn-primary">VIEW MAP</a> <a href="#inquiry" class="btn btn-default">Book Venue</a> </div>
+                <div class="col-md-4 venue-action"> <a href="#inquiry" class="btn btn-default">Book Vendor</a> </div>
             </div>
         </div>
         <div class="main-container">
@@ -106,17 +127,18 @@ if ($_POST) {
                 <div class="row">
                     <div class="col-md-8 page-description">
                         <div class="venue-details">
-                            <h2>Venue Details</h2>
+                            <h2>Vendor Details</h2>
 
                             <?php
-                            $data = mysqli_fetch_array($vq);
-
+                            $vq1 = mysqli_query($connection, "select * from tbl_vendormaster where vendor_id = {$vid} ") or die(mysqli_error($connection));
+                            $data = mysqli_fetch_array($vq1);
+                            
                             echo "<br><h3>{$data['vendor_name']}</h3>";
-
-                            echo "<br><h3>{$data['vendor_details']}</h3>";
-
-                            echo "<br><img style='width:70;' style='height:80;' src='{$data['vendor_photo']}'></img>";
-                            echo "<br>Rs.{$data['vendor_price']}";
+                            
+                            echo "<br><img style='width:400px;' src='../upload{$data['vendor_photo']}'></img>";
+                            echo "<br>";
+                            echo "<br><h4>{$data['vendor_details']}</h4>";
+                            echo "<br><h3>Vendor Price Rs.{$data['vendor_price']}</h3>";
                             echo "<br><h3>Mo.{$data['vendor_mobileno']}</h3>";
                             echo "<br><h3>Contact us : {$data['vendor_email']}</h3>";
 
@@ -137,67 +159,35 @@ if ($_POST) {
                             <div class="row">
                                 <div class="col-md-12">
                                     <h1>Couples Review</h1>
+                                
                                     <div class="review-list">
                                         <!-- First Comment -->
-                                        <div class="row">
-                                            <div class="col-md-2 col-sm-2 hidden-xs">
-                                                <div class="user-pic"> <img class="img-responsive img-circle" src="images/userpic.jpg" alt=""> </div>
-                                            </div>
-                                            <div class="col-md-10 col-sm-10">
-                                                <div class="panel panel-default arrow left">
-                                                    <div class="panel-body">
-                                                        <div class="text-left">
-                                                            <h3>The whole experience was Excellent</h3>
-                                                            <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>
-                                                        </div>
-                                                        <div class="review-post">
-                                                            <p> From initially being shown round through booking to breakfast the next morning. Nam eu enim mollis urna egestas interdum eget quis nisl. Ut sem velit, scelerisque nec commodo consequat, imperdiet non diam. </p>
-                                                        </div>
-                                                        <div class="review-user">By <a href="#">Jaisy and Kartin</a>, on <span class="review-date"></span>04 Apr 2015</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Second Comment -->
-                                        <div class="row">
-                                            <div class="col-md-2 col-sm-2 hidden-xs">
-                                                <div class="user-pic"> <img class="img-responsive img-circle" src="images/userpic.jpg" alt=""> </div>
-                                            </div>
-                                            <div class="col-md-10 col-sm-10">
-                                                <div class="panel panel-default arrow left">
-                                                    <div class="panel-body">
-                                                        <div class="text-left">
-                                                            <h3>The Facilities were Fantastic!</h3>
-                                                            <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>
-                                                        </div>
-                                                        <div class="review-post">
-                                                            <p> Curabitur mattis congue consectetur. Nulla facilisis dictum velit, ultrices imperdiet diam luctus quis. Vestibulum in volutpat purus, quis accumsan diam. The pastry heart on the pie was such a lovely touch that you could easily not have done. </p>
-                                                        </div>
-                                                        <div class="review-user">By <a href="#">Jaisy and Kartin</a>, on <span class="review-date"></span>04 Apr 2015</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                      
                                         <!-- Third Comment -->
-                                        <div class="row">
-                                            <div class="col-md-2 col-sm-2 hidden-xs">
-                                                <div class="user-pic"> <img class="img-responsive img-circle" src="images/userpic.jpg" alt=""> </div>
-                                            </div>
-                                            <div class="col-md-10 col-sm-10">
-                                                <div class="panel panel-default arrow left">
-                                                    <div class="panel-body">
-                                                        <div class="text-left">
-                                                            <h3> Aenean elementum dictum estsit amet ullamcorper</h3>
-                                                            <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>
-                                                        </div>
-                                                        <div class="review-post">
-                                                            <p> Vivamus condimentum orci non tellus tincidunt volutpat. Suspendisse gravida gravida arcu a pellentesque. Duis aliquet ut justo et accumsan. </p>
-                                                        </div>
-                                                        <div class="review-user">By <a href="#">Jaisy and Kartin</a>, on <span class="review-date"></span>04 Apr 2015</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <?php
+$req = mysqli_query($connection,"select * from tbl_review") or die(mysqli_error($connection));
+while ($reviewdata = mysqli_fetch_array($req))
+{
+echo '<div class="review-list">';
+
+    echo '<div class="row">';
+        echo '<div class="col-md-2 col-sm-2 hidden-xs">';
+            echo '<div class="user-pic"> <img class="img-responsive img-circle" src="images/userpic.jpg" alt=""> </div>';
+        echo '</div>';
+            echo '<div class="col-md-10 col-sm-10">';
+                echo '<div class="panel panel-default arrow left">';
+                    echo '<div class="panel-body">';
+                       
+                         echo '<div class="review-post">';
+                                echo "<p>{$reviewdata['review_details']}</p>";
+                            echo '</div>';
+                                    echo "<div class='review-user'>By <a href='#'></a>, on <span class='review-date'></span>{$reviewdata['review_date']}</div>";
+                            echo '</div>';
+                        echo '</div>';
+                    echo '</div>';
+                echo '</div>';
+}
+?>
                                     </div>
                                     <div class="review">
                                         <a class="btn btn-primary btn-block btn-lg" role="button" data-toggle="collapse" href="#review" aria-expanded="false" aria-controls="review"> Write A Review </a> </div>
@@ -205,60 +195,64 @@ if ($_POST) {
                                         <div class="panel panel-default">
                                             <div class="panel-body">
                                                 <h1>Write Your Review</h1>
-                                                <form method="post">
-                                                    <div class="rating-group">
-                                                        <div class="radio radio-success radio-inline">
-                                                            <input type="radio" name="radio1" id="radio1" value="option2">
-                                                            <label for="radio1" class="radio-inline"> <span class="rating"><i class="fa fa-star"></i></span> </label>
-                                                        </div>
-                                                        <div class="radio radio-success radio-inline">
-                                                            <input type="radio" name="radio1" id="radio2" value="option3">
-                                                            <label for="radio2" class="radio-inline"> <span class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i></span> </label>
-                                                        </div>
-                                                        <div class="radio radio-success radio-inline">
-                                                            <input type="radio" name="radio1" id="radio3" value="option3">
-                                                            <label for="radio3" class="radio-inline"> <span class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span> </label>
-                                                        </div>
-                                                        <div class="radio radio-success radio-inline">
-                                                            <input type="radio" name="radio1" id="radio4" value="option4">
-                                                            <label for="radio4" class="radio-inline"> <span class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span> </label>
-                                                        </div>
-                                                        <div class="radio radio-success radio-inline">
-                                                            <input type="radio" name="radio1" id="radio5" value="option5">
-                                                            <label for="radio5" class="radio-inline"> <span class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span> </label>
-                                                        </div>
-                                                    </div>
+                                                
+                                                <form method="post"  id="myform"  action="reveiwadd.php">
+                                                   <?php echo $msgr ;?>
+                                                   
+                                                    <input type="hidden" name="pid" value="<?php echo $vid;  ?>">
                                                     <!-- Text input-->
                                                     <div class="form-group">
                                                         <label class="control-label" for="name">Name</label>
                                                         <div class="">
-                                                            <input id="name" name="name" type="text" placeholder="Name" class="form-control input-md" required>
+                                                               <?php
+                                                   $selectcatrow = mysqli_query($connection, "select * from tbl_user") or die(mysqli_error($connection));
+                                                
+                                               echo"<select name='uname' class='form-control input-md' reqiured>";
+                                               echo "<option hidden>Select user name</option>";
+                                                  while($selectcatrowfetch = mysqli_fetch_array($selectcatrow))
+                                                  {
+                                                      
+                                                      echo "<option value='{$selectcatrowfetch['user_id']}'>{$selectcatrowfetch['user_name']}</option>";
+                                                  }
+                                                   echo"</select>";
+                                                      ?> 
                                                         </div>
                                                     </div>
                                                     <!-- Text input-->
                                                     <div class="form-group">
-                                                        <label class="control-label" for="email">E-Mail</label>
+                                                        <label class="control-label" for="email">Vendor name</label>
                                                         <div class=" ">
-                                                            <input id="email" name="email" type="text" placeholder="E-Mail" class="form-control input-md" required>
+                                                        <?php
+                                                   $selectcatrow = mysqli_query($connection, "select * from tbl_vendormaster") or die(mysqli_error($connection));
+                                                
+                                               echo"<select name='vname' class='form-control input-md'>";
+                                               echo "<option hidden>Select vendor name</option>";
+                                                  while($selectcatrowfetch = mysqli_fetch_array($selectcatrow))
+                                                  {
+                                                      
+                                                      echo "<option value='{$selectcatrowfetch['vendor_id']}'>{$selectcatrowfetch['vendor_name']}</option>";
+                                                  }
+                                                   echo"</select>";
+                                                      ?> 
                                                         </div>
                                                     </div>
                                                     <!-- Text input-->
                                                     <div class="form-group">
-                                                        <label class=" control-label" for="reviewtitle">Review Title</label>
+                                                        <label class=" control-label" for="reviewtitle">Review date</label>
                                                         <div class=" ">
-                                                            <input id="reviewtitle" name="reviewtitle" type="text" placeholder="Review Title" class="form-control input-md" required>
+                                                            <input id="reviewtitle" name="rdate" type="date" placeholder="Review Title" class="form-control input-md" required>
                                                         </div>
                                                     </div>
                                                     <!-- Textarea -->
                                                     <div class="form-group">
                                                         <label class=" control-label">Write Review</label>
                                                         <div class="">
-                                                            <textarea class="form-control" rows="8">Write Review</textarea>
+                                                            <textarea class="form-control" rows="8" name="details" placeholder="write your review here"></textarea>
                                                         </div>
                                                     </div>
                                                     <!-- Button -->
                                                     <div class="form-group">
-                                                        <button name="submit" class="btn btn-primary btn-lg">Submit Review</button>
+                                                        <button type="submit" class="btn btn-primary btn-lg">Submit Review</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -271,22 +265,13 @@ if ($_POST) {
                     </div>
                     <div class="col-md-4 page-sidebar">
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="venue-info">
-                                    <!-- venue-info-->
-                                    <div class="capacity">
-                                        <div>Capacity:</div>
-                                        <span class="cap-people"> 50 - 300 </span> </div>
-                                    <div class="pricebox">
-                                        <div>Avg price:</div>
-                                        <span class="price">$39.50</span></div>
-                                </div>
-                            </div>
+                            
                             <div class="col-md-12">
                                 <div class="well-box" id="inquiry">
                                     <h2>Send Enquiry to Vendor</h2>
                                     <p>Fill in your details and a Venue Specialist will get back to you shortly.</p>
                                     <form method="post" id="myform">
+                                        
                                         <div class="form-group">
                                             <label for="inputText3" class="control-label">Booking-date</label>
                                             <input id="inputText3" type="date" class="form-control" name="txt1" required>
@@ -341,37 +326,14 @@ if ($_POST) {
 
                                 </div>
                             </div>
-                            <div class="col-md-12 ">
-                                <div class="profile-sidebar well-box">
-                                    <!-- SIDEBAR USERPIC -->
-                                    <div class="profile-userpic"> <img src="images/profile_user.jpg" class="img-responsive img-circle" alt=""> </div>
-                                    <div class="profile-usertitle">
-                                        <div class="profile-usertitle-name">
-                                            <h2>John Wilburn</h2>
-                                        </div>
-                                        <div class="profile-address"> <i class="fa fa-map-marker"></i> Studio spaces,110 Pennington, London, E1W 2BB </div>
-                                        <div class="profile-website"> <i class="fa fa-link"></i> <a href="#">http://www.myvenue.com</a> </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 ">
-                                <div class="social-sidebar side-box">
-                                    <ul class="listnone follow-icon">
-                                        <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-flickr"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-youtube-square"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                            
+                          
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="googleMap" class="map"></div>
+      
         <div class="section-space60">
             <div class="container">
                 <div class="row">
@@ -462,39 +424,22 @@ include './theme/footer.php';
         <script src="js/jquery.sticky.js"></script>
         <script src="js/header-sticky.js"></script>
         <script src="http://maps.googleapis.com/maps/api/js"></script>
-        <script>
-            var myCenter = new google.maps.LatLng(23.0203458, 72.5797426);
-
-            function initialize() {
-                var mapProp = {
-                    center: myCenter,
-                    zoom: 9,
-                    scrollwheel: false,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                };
-
-                var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-
-                var marker = new google.maps.Marker({
-                    position: myCenter,
-
-                    icon: 'images/pinkball.png'
-                });
-
-                marker.setMap(map);
-                var infowindow = new google.maps.InfoWindow({
-                    content: "Hello Address"
-                });
-            }
-
-            google.maps.event.addDomListener(window, 'load', initialize);
-        </script>
+        
         <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
         <script type="text/javascript" src="js/price-slider.js"></script>
         <script>
             $(function () {
                 $("#weddingdate").datepicker();
             });
+        </script>
+        
+        <script src="jquery.validate.js" type="text/javascript"></script>
+     <script>
+            $(document).ready(function()
+            {
+                $("#myform").validate();
+            });
+              
         </script>
     </body>
 

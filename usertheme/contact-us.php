@@ -1,3 +1,31 @@
+<?php
+require './class/connection.php';
+
+$login = "";
+if ($_POST) {
+
+   $fname = $_POST['txt1'];
+   $lname = $_POST['txt2'];
+   $email= $_POST['txt3'];
+   $phone = $_POST['txt4'];
+   $cat = $_POST['txt5'];
+   $mess =$_POST['txt6'];
+   
+ 
+    $i = mysqli_query($connection,"insert into tbl_contactus(first_name,last_name,email,phone,category,message)values('{$fname}','{$lname}','{$email}','{$phone}','{$cat}','{$mess}')") or die (mysqli_error($connection));
+
+    if ($i) {
+        $msg = "Message sent successfully";
+    }
+}
+?>
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,9 +55,9 @@
 </head>
 
 <body>
-   <?php
-   include './theme/header.php';
-   ?>
+     <?php
+        include './theme/header.php';
+        ?>
     <div class="tp-page-head">
         <!-- page header -->
         <div class="container">
@@ -60,44 +88,44 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="well-box">
-                        <p>Please fill out the form below and we will get back to you as soon as possible.</p>
-                        <form>
+                        
+                        
+                        <form method="post">
                             <!-- Text input-->
                             <div class="form-group">
                                 <label class="control-label" for="first">First Name <span class="required">*</span></label>
-                                <input id="first" name="first" type="text" placeholder="First Name" class="form-control input-md" required>
+                                <input id="first" name="txt1" type="text" placeholder="First Name" class="form-control input-md" required>
                             </div>
                             <!-- Text input-->
                             <div class="form-group">
                                 <label class=" control-label" for="lastname">Last Name <span class="required">*</span></label>
                                 <div class=" ">
-                                    <input id="lastname" name="lastname" type="text" placeholder="Last name" class="form-control input-md" required>
+                                    <input id="lastname" name="txt2" type="text" placeholder="Last name" class="form-control input-md" required>
                                 </div>
                             </div>
                             <!-- Text input-->
                             <div class="form-group">
                                 <label class=" control-label" for="email">E-Mail <span class="required">*</span></label>
-                                <input id="email" name="email" type="text" placeholder="E-Mail" class="form-control input-md" required>
+                                <input id="email" name="txt3" type="text" placeholder="E-Mail" class="form-control input-md" required>
                             </div>
                             <!-- Text input-->
                             <div class="form-group">
                                 <label class=" control-label" for="phone">Phone <span class="required">*</span></label>
-                                <input id="phone" name="phone" type="text" placeholder="Phone" class="form-control input-md" required>
+                                <input id="phone" name="txt4" type="text" placeholder="Phone" class="form-control input-md" required>
                             </div>
                             <!-- Select Basic -->
                             <div class="form-group">
                                 <label class=" control-label" for="category">Category <span class="required">*</span></label>
-                                <select id="category" name="category" class="form-control selectpicker">
+                                <select id="category" name="txt5" class="form-control selectpicker">
                                     <option value="Couple">Couple</option>
                                     <option value="Vendor">Vendor</option>
-                                    <option value="Advertisement">Advertisement</option>
-                                    <option value="Suggestion">Suggestion</option>
+                                    
                                 </select>
                             </div>
                             <!-- Textarea -->
                             <div class="form-group">
                                 <label class="  control-label" for="message">Message</label>
-                                <textarea class="form-control" rows="6" id="message" name="message">Write Your Message</textarea>
+                                <textarea class="form-control" rows="6" id="message" name="txt6" placeholder="write your message"></textarea>
                             </div>
                             <!-- Button -->
                             <div class="form-group">
@@ -109,17 +137,14 @@
                 <div class="col-md-6 contact-info">
                     <div class="well-box">
                         <ul class="listnone">
-                            <li class="address">
-                                <h2><i class="fa fa-map-marker"></i>Location</h2>
-                                <p>1228 Hawks Nest Lane Saint Louis, MO 63143</p>
-                            </li>
+                        
                             <li class="email">
                                 <h2><i class="fa fa-envelope"></i>E-Mail</h2>
                                 <p>Info@weddingvendor.com</p>
                             </li>
                             <li class="call">
                                 <h2><i class="fa fa-phone"></i>Contact</h2>
-                                <p>+1800-123-4567</p>
+                                <p>1800-123-4567</p>
                             </li>
                         </ul>
                     </div>
@@ -134,9 +159,9 @@
         </div>
     </div>
     
-  <?php
- include './theme/footer.php';
-  ?>
+   <?php
+        include './theme/footer.php';
+        ?>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -148,7 +173,7 @@
     <script src="js/header-sticky.js"></script>
     <script src="http://maps.googleapis.com/maps/api/js"></script>
     <script>
-    var myCenter = new google.maps.LatLng(23.0203458, 72.5797426);
+  
 
     function initialize() {
         var mapProp = {

@@ -118,15 +118,15 @@ if ($_POST) {
                     <!-- Text input-->
                     <div class="form-group">
                         <label class="control-label" for="email">Old-password<span class="required">*</span></label>
-                        <input id="email" name="email" type="text" placeholder="Old password" class="form-control input-md" required>
+                        <input id="email" name="txt1" type="password" placeholder="Old password" class="form-control input-md" required>
                     </div>
                     <div class="form-group">
                         <label class="control-label" for="email">New-password<span class="required">*</span></label>
-                        <input id="email" name="email" type="text" placeholder="New password" class="form-control input-md" required>
+                        <input id="email" name="txt2" type="password" placeholder="New password" class="form-control input-md" required>
                     </div>
                     <div class="form-group">
                         <label class="control-label" for="email">Confirm-password<span class="required">*</span></label>
-                        <input id="email" name="email" type="text" placeholder="Confirm password" class="form-control input-md" required>
+                        <input id="email" name="txt3" type="password" placeholder="Confirm password" class="form-control input-md" required>
                     </div>
                     <div class="form-group">
                         <button id="submit" name="submit" class="btn btn-primary">Submit</button>

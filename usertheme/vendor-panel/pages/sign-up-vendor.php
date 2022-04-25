@@ -9,7 +9,7 @@ if ($_POST) {
     $details = $_POST['txt3'];
     $catid = $_POST['txt4'];
     $areaid = $_POST['txt5'];
-    $pic = "./upload/".$_FILES['txt6']['name'];
+    $pic = "../../../upload/".$_FILES['txt6']['name'];
     $price = $_POST['txt7'];
     $mono = $_POST['txt8'];
     $email = $_POST['txt9'];
@@ -188,7 +188,7 @@ if ($_POST) {
                     </div>
                     <div class="row row-cols-2">
                         <div class="col">
-
+                             <label for="inputPassword">Already a vendor ? <a href="login-vendor.php"><b>Login</b></a></label>
                         </div>
                         <div class="col">
                             <div class="form-group"> 

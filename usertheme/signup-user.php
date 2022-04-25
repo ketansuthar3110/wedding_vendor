@@ -65,132 +65,9 @@ if ($_POST) {
 </head>
 
 <body>
-    <div class="collapse" id="searcharea">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
-            <span class="input-group-btn">
-    <button class="btn tp-btn-primary" type="button">Search</button>
-    </span> </div>
-    </div>
-    <div class="top-bar">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 top-message">
-                    <p>Welcome to Wedding Vendor.</p>
-                </div>
-                <div class="col-md-6 top-links">
-                    <ul class="listnone">
-                        <li><a href="faq.html"> Help </a></li>
-                        <li><a href="pricing-plan.html">Pricing</a></li>
-                        <li><a href="signup-couple.html" class=" ">I m couple</a></li>
-                        <li><a href="signup-vendor.html">Are you vendor?</a></li>
-                        <li><a href="login-page.html">Log in</a></li>
-                        <li>
-                            <a role="button" data-toggle="collapse" href="#searcharea" aria-expanded="false" aria-controls="searcharea"> <i class="fa fa-search"></i> </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 logo">
-                    <div class="navbar-brand">
-                        <a href="index.html"><img src="images/logo.png" alt="Wedding Vendors" class="img-responsive"></a>
-                    </div>
-                </div>
-                <div class="col-md-9">
-                    <div class="navigation" id="navigation">
-                         
-                        <ul>
-                            <li class="active"><a href="index.html">Home</a>
-                                <ul>
-                                    <li><a href="index.html" title="Home" class="animsition-link">Home</a></li>
-                                    <li><a href="index-2.html" title="Home v.2" class="animsition-link">Home v.2</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Listing</a>
-                                <ul>
-                                    <li><a href="vendor-listing-row-map.html" title="Home" class="animsition-link">List / Half Map</a></li>
-                                    <li><a href="vendor-listing-sidebar.html" title="Home" class="animsition-link">List / Sidebar Left</a></li>
-                                    <li><a href="vendor-listing-no-sidebar.html" title="Home" class="animsition-link">List / No Sidebar</a></li>
-                                    <li><a href="vendor-listing-top-map.html" title="Home" class="animsition-link">Top Map / List</a></li>
-                                    <li><a href="vendor-list-4-colmun.html" title="Home" class="animsition-link">4 Column List</a></li>
-                                    <li><a href="vendor-list-3-colmun.html" title="Home" class="animsition-link">3 Column List</a></li>
-                                    <li><a href="vendor-list-horizontal.html" title="Home" class="animsition-link">Horizontal List </a></li>
-                                    <li><a href="vendor-list-new.html" title="Home" class="animsition-link">List Variations </a></li>
-                                    <li><a href="vendor-listing-bubba.html">Bubba Style Listing</a></li>
-                                    <li><a href="vendor-listing-ocean.html">Ocean Style Listing</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="vendor-details.html">Vendor</a>
-                                <ul>
-                                    <li><a href="vendor-details.html">Vendor Simple</a></li>
-                                    <li><a href="vendor-details-tabbed.html">Vendor Tabbed</a></li>
-                                    <li><a href="vendor-profile.html">Vendor Profile</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="venue-listing.html" title="Home" class="animsition-link">Suppliers</a>
-                                <ul>
-                                    <li><a href="venue-listing.html">Venue List</a></li>
-                                    <li><a href="photography-listing.html">Photographer List</a></li>
-                                    <li><a href="dresses-listing.html">Dresses List</a></li>
-                                    <li><a href="florist-listing.html">Florist List</a></li>
-                                    <li><a href="videography-listing.html">Videography List</a></li>
-                                    <li><a href="cake-listing.html">Cake List</a></li>
-                                    <li><a href="music-listing.html">Music List</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Planning Tools</a>
-                                <ul>
-                                    <li><a href="planning-to-do.html">To Do List</a></li>
-                                    <li><a href="planning-budget.html">Budget Planner</a></li>
-                                    <li><a href="couple-landing-page.html">Couple Signup (LP)</a></li>
-                                    <li><a href="couple-dashboard.html">Couple Admin</a></li>
-                                    <li><a href="dashboard-vendor.html">Vendor Admin</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Features</a>
-                                <ul>
-                                    <li><a href="#">Blog</a>
-                                        <ul>
-                                            <li><a href="blog.html">Blog Listing</a></li>
-                                            <li><a href="blog-single.html">Blog Single</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="about-us.html">About us</a></li>
-                                    <li><a href="contact-us.html">Contact us</a></li>
-                                    <li><a href="pricing-plan.html">Pricing Table</a></li>
-                                    <li><a href="faq.html">FAQ's</a></li>
-                                    <li><a href="404-error.html">404 Error</a></li>
-                                    <li><a href="#">Shortcodes</a>
-                                        <ul>
-                                            <li><a href="shortcode-columns.html">Column</a></li>
-                                            <li><a href="shortcode-accordion.html">Accordion</a></li>
-                                            <li><a href="shortcode-tabs.html">Tabs</a></li>
-                                            <li><a href="shortcode-pagination.html">Paginations</a></li>
-                                            <li><a href="shortcode-typography.html">Typography</a></li>
-                                            <li><a href="shortcode-accordion.html">Accordion</a></li>
-                                            <li><a href="shordcods-alerts.html">Alert</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="wedding-guideline.html">Template Guideline</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Real Weddings</a>
-                                <ul>
-                                    <li><a href="real-wedding-listing.html">Listing</a></li>
-                                    <li><a href="real-wedding-single.html">Real Wedding Single</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php
+    include './theme/header.php';
+    ?>
     <div class="tp-page-head">
         <!-- page header -->
         <div class="container">
@@ -223,14 +100,14 @@ if ($_POST) {
     <div class="main-container">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 singup-couple">
+                <div class="col-md-12 singup-couple">
                     <?php
                     echo $msg;
                    
                     ?>
                     <div class="well-box">
                         <h2>User registration</h2>
-                       <form method="post" id="myform">
+                       <form method="post">
                                             <div class="form-group">
                                                 <label for="inputText3" class="col-form-label">User name</label>
                                                 <input id="inputText3" type="text" class="form-control" name="txt1" placeholder="Enter name" required>
@@ -279,52 +156,13 @@ if ($_POST) {
                                             </div>
                            
                                             <div class="form-group"> 
-                                            <button type="submit" class="btn btn-primary">Add Record</button> 
+                                            <button type="submit" class="btn btn-primary">Submit</button> 
                                         </div>
                                         </form>
                     </div>
                     
                 </div>
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="col-md-6 feature-block">
-                            <div class="well-box">
-                                <div class="feature-icon"> <i class="icon-list-2 icon-size-60 icon-default"></i> </div>
-                                <div class="feature-content">
-                                    <h3>Wedding Checklist</h3>
-                                    <p>Nullam porttitor lorem atdiam quis semper diam orci at neque.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 feature-block">
-                            <div class="well-box">
-                                <div class="feature-icon"><i class="icon-budget icon-size-60 icon-default"></i></div>
-                                <div class="feature-content">
-                                    <h3>Wedding Budget</h3>
-                                    <p>Donec convallis libero et risus maximus cgestas sem venenatis vel.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 feature-block">
-                            <div class="well-box">
-                                <div class="feature-icon"><i class="icon-wedding-arch icon-size-60 icon-default"></i></div>
-                                <div class="feature-content">
-                                    <h3>Wedding Vendors</h3>
-                                    <p>Aliquam erat volutpat. Quisque ullamcorper quis ipsum eget consequat.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 feature-block">
-                            <div class="well-box">
-                                <div class="feature-icon"><i class="icon-two-hearts icon-size-60 icon-default"></i></div>
-                                <div class="feature-content">
-                                    <h3>Everything you need</h3>
-                                    <p>Fusce dapibus ex ac justo facili libero et risus maximus convallis.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+             
             </div>
         </div>
     </div>

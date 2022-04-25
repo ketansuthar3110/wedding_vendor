@@ -69,7 +69,7 @@ if ($_POST) {
     <!-- ============================================================== -->
     <div class="splash-container">
         <div class="card ">
-            <div class="card-header text-center"><a href="../index.html"><img class="logo-img" src="../assets/images/logo.png" alt="logo"></a><span class="splash-description">Please enter your Vendor information.</span></div>
+            <div class="card-header text-center"><a href="../index.html"><img style="width:200px;"class="logo-img" src="../assets/images/logo.jpg" alt="logo"></a><span class="splash-description">Please enter your Vendor information.</span></div>
             <div class="card-body">
                 <?php
                 echo $msg;

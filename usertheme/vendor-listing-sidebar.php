@@ -47,8 +47,8 @@ $cid = "";
                         <div class="icon-circle">
                             <i class="icon icon-size-60  icon-list icon-white"></i>
                         </div>
-                        <h1>Venue Listing Sidebar</h1>
-                        <p>Venue Listing Sidebar for multiple use for vendor.</p>
+                        <h1>Vendor List</h1>
+                        <p>Book Your Vendor</p>
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@ $cid = "";
                 <div class="col-md-12">
                     <ol class="breadcrumb">
                         <li><a href="#">Home</a></li>
-                        <li class="active">Venue Listing Sidebar</li>
+                        <li class="active">Venue List</li>
                     </ol>
                 </div>
             </div>
@@ -77,7 +77,7 @@ $cid = "";
                         </div>
                         <form>
                             <div class="col-md-12 form-group">
-                                <label class="control-label" for="venuetype">Venue Type</label>
+                                <label class="control-label" for="venuetype">Vendor Type</label>
                                 <select id="venuetype" name="venuetype" class="form-control">
                                     <option value="">Select Venue</option>
                                     <option value="Barn">Barn</option>
@@ -103,13 +103,7 @@ $cid = "";
                                     <option value="Weekend">Weekend</option>
                                 </select>
                             </div>
-                            <div class="col-md-12 form-group">
-                                <div class="price-range default-range">
-                                    <label for="amount" class="control-label">Price range:</label>
-                                    <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-                                    <div id="slider-range"></div>
-                                </div>
-                            </div>
+                         
                             <div class="col-md-12 form-group">
                                 <label class="control-label" for="price">Price</label>
                                 <select id="price" name="price" class="form-control">
@@ -121,56 +115,8 @@ $cid = "";
                                     <option value="$80 - $90">$80 - $90</option>
                                 </select>
                             </div>
-                            <div class="col-md-12 form-group rating">
-                                <label class="control-label">Select Rating </label>
-                                <div class="checkbox checkbox-success">
-                                    <input type="checkbox" name="checkbox" id="checkbox-0" value="1" class="styled">
-                                    <label for="checkbox-0" class="control-label"> <i class="fa fa-star"></i> </label>
-                                </div>
-                                <div class="checkbox checkbox-success">
-                                    <input type="checkbox" name="checkbox" id="checkbox-1" value="2" class="styled">
-                                    <label for="checkbox-1" class="control-label"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </label>
-                                </div>
-                                <div class="checkbox checkbox-success">
-                                    <input type="checkbox" name="checkbox" id="checkbox-2" value="3" class="styled">
-                                    <label for="checkbox-2" class="control-label"> <i class="fa fa-star"></i> <i class="fa fa-star"></i><i class="fa fa-star"></i> </label>
-                                </div>
-                                <div class="checkbox checkbox-success">
-                                    <input type="checkbox" name="checkbox" id="checkbox-3" value="4" class="styled">
-                                    <label for="checkbox-3" class="control-label"> <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> </label>
-                                </div>
-                                <div class="checkbox checkbox-success">
-                                    <input type="checkbox" name="checkbox" id="checkbox-4" value="5" class="styled">
-                                    <label for="checkbox-4" class="control-label"> <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> </label>
-                                </div>
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <label class="control-label">Amenities</label>
-                                <div class="checkbox checkbox-success">
-                                    <input type="checkbox" name="checkbox" id="weddinghall" value="Wedding Hall" class="styled">
-                                    <label for="weddinghall" class="control-label"> Wedding Hall </label>
-                                </div>
-                                <div class="checkbox checkbox-success">
-                                    <input type="checkbox" name="checkbox" id="dining" value="Dining" class="styled">
-                                    <label for="dining" class="control-label"> Dining </label>
-                                </div>
-                                <div class="checkbox checkbox-success">
-                                    <input type="checkbox" name="checkbox" id="insurance" value="Liability Insurance" class="styled">
-                                    <label for="insurance" class="control-label"> Liability Insurance </label>
-                                </div>
-                                <div class="checkbox checkbox-success">
-                                    <input type="checkbox" name="checkbox" id="catering" value="In House Catering" class="styled">
-                                    <label for="catering" class="control-label"> In House Catering </label>
-                                </div>
-                                <div class="checkbox checkbox-success">
-                                    <input type="checkbox" name="checkbox" id="djfacilities" value="5" class="styled">
-                                    <label for="djfacilities" class="control-label"> DJ Facilities </label>
-                                </div>
-                                <div class="checkbox checkbox-success">
-                                    <input type="checkbox" name="checkbox" id="dancefloor" value="Dance Foor" class="styled">
-                                    <label for="dancefloor" class="control-label"> Dance Foor </label>
-                                </div>
-                            </div>
+                            
+                           
                             <div class="col-md-12 form-group">
                                 <button type="submit" class="btn btn-primary btn-block">Search</button>
                             </div>
@@ -197,7 +143,7 @@ $cid = "";
 
                                                          echo"       <div class='vendor-image'>";
 
-                                                                 echo"   <a href='vendor-details.php?pid={$data['vendor_id']}'><img src='{$data['vendor_photo']}' alt='wedding venue' class='img-responsive'></img></a>";
+                                                                 echo"   <a href='vendor-details-tabbed.php?pid={$data['vendor_id']}'><img src='../upload{$data['vendor_photo']}' alt='wedding venue' class='img-responsive'></img></a>";
                                                               echo"      <div class='favourite-bg'><a href='#' class=''><i class='fa fa-heart'></i></a></div>";
                                                              echo"   </div>";
 
@@ -206,8 +152,8 @@ $cid = "";
                                                                 echo"<div class='caption'>";
 
                                                                             echo" <h2><a href='# 'class='title'>{$data['vendor_name']}</a></h2>";
-                                                                            echo" <p class='location'><i class='fa fa-map-marker'></i> {$data['vendor_details']}</p>";
-                                                                            echo"<p class='location'><i class='fa fa-map-marker'></i> Mo.{$data['vendor_mobileno']}</p>";
+                                                                            echo" <p class='location'><i class='fa fa-arrow-right'></i> {$data['vendor_details']}</p>";
+                                                                            echo"<p class='location'><i class='fa fa-mobile'></i> Mo.{$data['vendor_mobileno']}</p>";
                                                               echo"<div class='rating'> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star-o'></i> <span class='rating-count'>(22)</span> </div>";
                                                               echo"</div>";
 
@@ -235,7 +181,7 @@ $cid = "";
 
                                                  echo"       <div class='vendor-image'>";
 
-                                                         echo"   <a href='vendor-details.php?pid={$data['vendor_id']}'><img src='images/vendor-6.jpg' alt='wedding venue' class='img-responsive'></a>";
+                                                         echo"   <a href='vendor-details-tabbed.php?pid={$data['vendor_id']}'><img src='../upload{$data['vendor_photo']}' alt='wedding venue' class='img-responsive'></a>";
                                                       echo"      <div class='favourite-bg'><a href='#' class=''><i class='fa fa-heart'></i></a></div>";
                                                      echo"   </div>";
 
@@ -272,7 +218,7 @@ $cid = "";
 
                                                          echo"       <div class='vendor-image'>";
 
-                                                                 echo"   <a href='vendor-details.php?pid={$data['vendor_id']}'><img src='images/vendor-6.jpg' alt='wedding venue' class='img-responsive'></a>";
+                                                                 echo"   <a href='vendor-details-tabbed.php?pid={$data['vendor_id']}'><img src='../upload{$data['vendor_photo']}' alt='wedding venue' class='img-responsive'></a>";
                                                               echo"      <div class='favourite-bg'><a href='#' class=''><i class='fa fa-heart'></i></a></div>";
                                                              echo"   </div>";
 
@@ -281,8 +227,8 @@ $cid = "";
                                                                 echo"<div class='caption'>";
 
                                                                             echo" <h2><a href='# 'class='title'>{$data['vendor_name']}</a></h2>";
-                                                                            echo" <p class='location'><i class='fa fa-map-marker'></i> {$data['vendor_details']}</p>";
-                                                                            echo"<p class='location'><i class='fa fa-map-marker'></i> Mo.{$data['vendor_mobileno']}</p>";
+                                                                            echo" <p class='location'><i class='fa fa-arrow-right'></i> {$data['vendor_details']}</p>";
+                                                                            echo"<p class='location'><i class='fa fa-mobile'></i> Mo.{$data['vendor_mobileno']}</p>";
                                                               echo"<div class='rating'> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star-o'></i> <span class='rating-count'>(22)</span> </div>";
                                                               echo"</div>";
 

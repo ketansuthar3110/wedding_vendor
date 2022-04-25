@@ -1,7 +1,8 @@
 <?php
-require '../class/connection.php';
+require './class/connection.php';
+
 $msg = "";
-    $editid = $_GET['eid'];
+    $editid = $_GET['uid'];
         $up = mysqli_query($connection,"select * from tbl_vendormaster where vendor_id = '{$editid}'") or die (mysqli_error($connection));
 
     $selectrow = mysqli_fetch_array($up);
@@ -12,7 +13,7 @@ if($_POST)
     $details = $_POST['txt3'];
     $catid = $_POST['txt4'];
     $areaid = $_POST['txt5'];
-    $pic = "./upload/".$_FILES['txt6']['name'];
+    $pic = "../../upload/".$_FILES['txt6']['name'];
     $price = $_POST['txt7'];
     $mono = $_POST['txt8'];
     $email = $_POST['txt9'];
@@ -33,7 +34,7 @@ if($update)
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+    <title>Wedding Vendor edit-vendors</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
     <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
@@ -80,16 +81,10 @@ if($update)
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="page-header" id="top">
-                                    <h2 class="pageheader-title">Form Elements </h2>
+                                    <h2 class="pageheader-title">Vendor Form</h2>
                                     <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
                                     <div class="page-breadcrumb">
-                                        <nav aria-label="breadcrumb">
-                                            <ol class="breadcrumb">
-                                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Forms</a></li>
-                                                <li class="breadcrumb-item active" aria-current="page">Form Elements</li>
-                                            </ol>
-                                        </nav>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -177,11 +172,11 @@ echo"</select>";
                                             </div>
                                             
                                            
-                                            <div class="form-group"> 
-                                            <button type="submit" class="btn btn-default">Add Record</button> 
-                                            <button type="reset" class="btn btn-default">Reset</button>
-                                            <button type="button" class="btn btn-default"onclick="window.location = 'view-vendor.php'">View Record</button> 
-                                        </div>
+                                          <div class="card-footer"> 
+                                            <button type="submit" class="btn btn-success btn-sm">Update Record</button> 
+                                            <button type="reset" class="btn btn-danger btn-sm">Reset</button>
+                                            <button type="button" class="btn btn-primary btn-sm"onclick="window.location = 'view-vendor.php'">View Record</button> 
+                                        </div> 
                                         </form>
                                     </div>
                                     
@@ -195,9 +190,7 @@ echo"</select>";
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <?php
-                                include './theme/footer.php';
-                                    ?>
+            
             <!-- ============================================================== -->
             <!-- end footer -->
             <!-- ============================================================== -->
