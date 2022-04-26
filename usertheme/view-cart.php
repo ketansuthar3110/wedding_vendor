@@ -1,7 +1,7 @@
 <?php
 require './class/connection.php';
 session_start();
-$k = 2;
+$lastid = $_GET['lsid'];
 $i=1;
 if(isset($_GET['id']))
 {
@@ -39,7 +39,8 @@ else
 echo "<a href='vendor-listing-sidebar.php'>Buy more</a>";
 if(isset($_SESSION['userid'] ))
 {
-    echo "<a href='booking-info.php?bid=$k'>Checkout</a>";
+    echo $lastid;
+    echo "<a href='booking-info.php?bid={$lastid}'>Checkout</a>";
 }
 else
 {

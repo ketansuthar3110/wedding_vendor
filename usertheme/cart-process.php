@@ -21,6 +21,14 @@ if(isset($_POST['booknow']))
 }
 if(isset($_POST['wishlist']))
 {
+     $date = $_POST['txt1'];
+    $userid = $_POST['txt2'];
+    $vid = $_POST['txt3'];
+    $bprice = $_POST['txt4'];
+    $bstatus = $_POST['txt5'];
+
+    $i = mysqli_query($connection, "insert into tbl_booking(booking_date,user_id,vendor_id,booking_price,booking_status)values('{$date}','{$userid}','{$vid}','{$bprice}','{$bstatus}')") or die(mysqli_error($connection));
+    $lastid = mysqli_insert_id($connection);
                 if(isset($_SESSION['vcart']))
                 {
                     $cnum = $_SESSION['counter']+1;
@@ -39,6 +47,6 @@ if(isset($_POST['wishlist']))
                     $_SESSION['counter'] = 0;
 
                 }
-                header("location:view-cart.php");
+                header("location:view-cart.php?lsid={$lastid}");
 }
 ?>
