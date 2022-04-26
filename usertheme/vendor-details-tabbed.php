@@ -17,8 +17,8 @@ $msgr = "";
 $msgreview = "";
 
 if ($_POST) {
-    
-   
+
+
     $date = $_POST['txt1'];
     $userid = $_POST['txt2'];
     $vid = $_POST['txt3'];
@@ -27,11 +27,9 @@ if ($_POST) {
 
     $i = mysqli_query($connection, "insert into tbl_booking(booking_date,user_id,vendor_id,booking_price,booking_status)values('{$date}','{$userid}','{$vid}','{$bprice}','{$bstatus}')") or die(mysqli_error($connection));
     $lastid = mysqli_insert_id($connection);
-    
-    
-    
+    $ordet = mysqli_query($connection,"insert into tbl_booking_details(booking_id,booking_date,user_id,vendor_id,booking_price)values('{$lastid}','{$date}','{$userid}','{$vid}','{$bprice}')") or die(mysqli_error($connection));
     if ($i) {
-         
+
         header("location:payment.php?pyd={$lastid}");
     }
 }
@@ -204,7 +202,7 @@ if ($_POST) {
                                                         INNER JOIN `tbl_user` 
                                                             ON (`tbl_user`.`user_id` = `tbl_review`.`user_id`) where tbl_vendormaster.vendor_id=$vid";
                                             $req = mysqli_query($connection, $sql) or die(mysqli_error($connection));
-                                           
+
                                             while ($reviewdata = mysqli_fetch_array($req)) {
                                                 echo '<div class="review-list">';
 
@@ -300,13 +298,13 @@ if ($_POST) {
                         <!-- /.tab content start-->
                     </div>
                 </div>
-              <div class="row">
+                <div class="row">
                     <div class="col-md-8">
                         <div class="side-box" id="inquiry">
                             <h2>Send Enquiry to Vendor</h2>
                             <p>Fill in your details and a Venue Specialist will get back to you shortly.</p>
-                            <form method="post" id="myform">
-                              
+                            <form method="post" id="myform"  action="cart-process.php">
+
                                 <div class="form-group">
                                     <label for="inputText3" class="control-label">Booking-date</label>
                                     <input id="inputText3" type="date" class="form-control" name="txt1" required>
@@ -356,10 +354,13 @@ if ($_POST) {
 
 
                                 <div class="form-group"> 
-                                    <button name="submit" class="btn btn-default btn-lg btn-block">Book Vendor Now</button>";?>
-                                  <!---  <button name="submit" class="btn btn-default btn-lg btn-block"onclick="window.location = 'view-booking.php'">View</button>--->
+                                    <input type="hidden" name="pid" value="<?php echo $vid ?>"/>
+                                    <button name="booknow" class="btn btn-default btn-lg btn-block">Book Vendor Now</button>
+                                    <button name="wishlist" class="btn btn-default btn-lg btn-block">Add to Wishlist</button>
+                                    <!---  <button name="submit" class="btn btn-default btn-lg btn-block"onclick="window.location = 'view-booking.php'">View</button>--->
                                 </div>
                             </form>
+                           
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -390,11 +391,6 @@ if ($_POST) {
                 </div>
             </div>
         </div>
-        <form method="get" action="cart-process.php">
-    <input type="hidden" name="pid" value="<?php echo $vid ?>"/>
-   
-    <input type="submit" value="Add to cart">
-</form>
 
         <?php
         include './theme/footer.php';
@@ -412,37 +408,37 @@ if ($_POST) {
         <script src="js/header-sticky.js"></script>
         <script src="http://maps.googleapis.com/maps/api/js"></script>
         <script>
-                                        var myCenter = new google.maps.LatLng(23.0203458, 72.5797426);
+            var myCenter = new google.maps.LatLng(23.0203458, 72.5797426);
 
-                                        function initialize() {
-                                            var mapProp = {
-                                                center: myCenter,
-                                                zoom: 9,
-                                                mapTypeId: google.maps.MapTypeId.ROADMAP
-                                            };
+            function initialize() {
+                var mapProp = {
+                    center: myCenter,
+                    zoom: 9,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
 
-                                            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+                var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
-                                            var marker = new google.maps.Marker({
-                                                position: myCenter,
+                var marker = new google.maps.Marker({
+                    position: myCenter,
 
-                                                icon: 'images/pinkball.png'
-                                            });
+                    icon: 'images/pinkball.png'
+                });
 
-                                            marker.setMap(map);
-                                            var infowindow = new google.maps.InfoWindow({
-                                                content: "Hello Address"
-                                            });
-                                        }
+                marker.setMap(map);
+                var infowindow = new google.maps.InfoWindow({
+                    content: "Hello Address"
+                });
+            }
 
-                                        google.maps.event.addDomListener(window, 'load', initialize);
+            google.maps.event.addDomListener(window, 'load', initialize);
         </script>
         <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
         <script type="text/javascript" src="js/price-slider.js"></script>
         <script>
-                                        $(function () {
-                                            $("#weddingdate").datepicker();
-                                        });
+            $(function () {
+                $("#weddingdate").datepicker();
+            });
         </script>
     </body>
 
