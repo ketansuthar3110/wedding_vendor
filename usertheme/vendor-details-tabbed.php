@@ -26,7 +26,7 @@ if ($_POST) {
 
     $i = mysqli_query($connection, "insert into tbl_booking(booking_date,user_id,vendor_id,booking_price,booking_status)values('{$date}','{$userid}','{$vid}','{$bprice}','{$bstatus}')") or die(mysqli_error($connection));
     $lastid = mysqli_insert_id($connection);
-    $ordet = mysqli_query($connection,"insert into tbl_booking_details(booking_id,booking_date,user_id,vendor_id,booking_price)values('{$lastid}','{$date}','{$userid}','{$vid}','{$bprice}')") or die(mysqli_error($connection));
+    $ordet = mysqli_query($connection, "insert into tbl_booking_details(booking_id,booking_date,user_id,vendor_id,booking_price)values('{$lastid}','{$date}','{$userid}','{$vid}','{$bprice}')") or die(mysqli_error($connection));
     if ($i) {
 
         header("location:payment.php?pyd={$lastid}");
@@ -305,67 +305,49 @@ if ($_POST) {
                             <form method="post" id="myform"  action="cart-process.php">
 
                                 <div class="form-group">
-                                    <label for="inputText3" class="control-label">Booking-date</label>
+                                    <label for="inputText3" class="control-label">Wedding Date</label>
                                     <input id="inputText3" type="date" class="form-control" name="txt1" required>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="inputText3" class="control-label">User-name</label>
-                                    <?php
-                                    $myuserid = $_SESSION['userid'];
-                                    echo"<select name='txt2' class='form-control'>";
-                                    echo "<option hidden>Select user name</option>";
 
-                                    echo "<option value='{$myuserid}'>{$_SESSION['username']}</option>";
 
-                                    echo"</select>";
-                                    ?> 
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputText3" class="control-label">Vendor-name</label>
-                                    <?php
-                                    $selectcatrow1 = mysqli_query($connection, "select vendor_name from tbl_vendormaster where vendor_id={$vid}") or die(mysqli_error($connection));
-
-                                    echo"<select name='txt3' class='form-control'>";
-                                    echo "<option hidden>Select vendor name</option>";
-                                    $selectcatrowfetch1 = mysqli_fetch_array($selectcatrow1);
-
-                                    echo "<option value='{$vid}'>{$selectcatrowfetch1['vendor_name']}</option>";
-
-                                    echo"</select>";
-                                    ?> 
-                                </div>
                                 <div class="form-group">
                                     <label for="inputPassword" class="control-label">Booking Price</label>
                                     <?php
                                     $veprice = mysqli_query($connection, "select vendor_price from tbl_vendormaster where vendor_id={$vid}") or die(mysqli_error($connection));
                                     $vprice = mysqli_fetch_array($veprice);
                                     ?>
-                                    <input id="inputPassword" type="text" name="txt4" placeholder="Enter Price" class="form-control" value="<?php echo "{$vprice['vendor_price']}"; ?>" required>
+                                    <input id="inputPassword" type="text" name="txt4" placeholder="Enter Price" class="form-control" value="<?php echo "{$vprice['vendor_price']}"; ?>" readonly>
                                 </div>
 
 
 
-                                <div class="form-group">
-                                    <label for="inputText3" class="control-label">Booking-status</label>
-                                    <input id="inputText3" type="text" class="form-control" name="txt5" placeholder="Enter booking status" value="pending" required>
-                                </div>
+
 
 
                                 <div class="form-group"> 
                                     <input type="hidden" name="pid" value="<?php echo $vid ?>"/>
-                                    <button name="booknow" class="btn btn-default btn-lg btn-block">Book Vendor Now</button>
-                                    <button name="wishlist" class="btn btn-default btn-lg btn-block">Add to Wishlist</button>
-                                    <!---  <button name="submit" class="btn btn-default btn-lg btn-block"onclick="window.location = 'view-booking.php'">View</button>--->
+                                    <?php
+                                    if (isset($_SESSION['username'])) {
+                                        echo"<button name='booknow' class='btn btn-default btn-lg btn-block'>Book Vendor Now</button>";
+                                        echo"<button name='wishlist' class='btn btn-default btn-lg btn-block'>Add to Wishlist</button>";
+                                    } 
+                                    
+                                    ?>
                                 </div>
                             </form>
-                           
+                            <?php
+                            if(!isset($_SESSION['username']))
+                                     {
+                                        echo"<a href='login-page.php'><button name='wishlist' class='btn btn-default btn-lg btn-block' >Login</button></a>";
+                                    }
+                                    ?>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="profile-sidebar side-box">
                             <!-- SIDEBAR USERPIC -->
-                            <?php echo "<div class='profile-userpic'> <img src='../upload{$data['vendor_photo']}' class='img-responsive img-circle' alt=''> </div>"; ?>
+<?php echo "<div class='profile-userpic'> <img src='../upload{$data['vendor_photo']}' class='img-responsive img-circle' alt=''> </div>"; ?>
                             <div class="profile-usertitle">
                                 <div class="profile-usertitle-name">
                                     <h2><?php echo "{$data1['vendor_name']}"; ?></h2>
@@ -391,9 +373,9 @@ if ($_POST) {
             </div>
         </div>
 
-        <?php
-        include './theme/footer.php';
-        ?>
+<?php
+include './theme/footer.php';
+?>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="js/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->

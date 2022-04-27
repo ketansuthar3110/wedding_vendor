@@ -4,10 +4,6 @@ $user = "root";
 $password = "";
 $database = "db_wedding";
 $connection = mysqli_connect($host, $user , $password, $database);
-
-
- 
-
 ?>
 <div class="collapse" id="searcharea">
         <!-- top search -->
@@ -81,7 +77,7 @@ $connection = mysqli_connect($host, $user , $password, $database);
                                 
                                  echo"<ul>";
                                     echo"<li><a href='view-booking.php' title='Home'class='animsition-link'>View order</a></li>";
-                                    echo"<li><a href='login-page.php' title='Home' class='animsition-link'>Login</a></li>";
+                                    
                                      echo"<li><a href='change-password-user.php' title='Home' class='animsition-link'>Change Password</a></li>";
                                       echo"<li><a href='logout.php' title='Home' class='animsition-link'>Logout</a></li>";
                                echo" </ul>";

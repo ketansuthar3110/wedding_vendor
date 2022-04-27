@@ -1,5 +1,6 @@
 <?php
 require './class/connection.php';
+session_start();
 use PHPMailer\PHPMailer\PHPMailer;
 
 use PHPMailer\PHPMailer\Exception;

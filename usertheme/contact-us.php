@@ -1,6 +1,6 @@
 <?php
 require './class/connection.php';
-
+session_start();
 $login = "";
 if ($_POST) {
 

@@ -1,5 +1,6 @@
 <?php
 require './class/connection.php';
+session_start();
 $pid = "";
 
 $cid = "";
