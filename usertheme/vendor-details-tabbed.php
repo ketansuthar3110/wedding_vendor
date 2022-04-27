@@ -1,7 +1,6 @@
 <?php
 require './class/connection.php';
-
-ob_start();
+session_start();
 $vid = $_GET['pid'];
 $vq = mysqli_query($connection, "select * from tbl_vendormaster where vendor_id = {$vid} ") or die(mysqli_error($connection));
 $data1 = mysqli_fetch_array($vq);

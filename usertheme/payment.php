@@ -44,6 +44,10 @@
             <?php
             require './class/connection.php';
             session_start();
+            if(isset($_GET['pyd']))
+            {
+                
+            
             $sql ="SELECT
     `tbl_booking`.`booking_id`
     , `tbl_booking`.`booking_date`
@@ -68,8 +72,27 @@ WHERE (`tbl_booking`.`booking_id` ='{$_GET['pyd']}');";
                echo "<td>{$row['booking_price']}</td>";
                echo "</tr>";
             }
-         
+            }
+            else
+            {
+                
+            
+            foreach ($_SESSION['vcart'] as $key => $value)
+                    {
+                        $pq = mysqli_query($connection, "select * from tbl_vendormaster where vendor_id = '{$value}' ") or die (mysqli_error($connection));
+                        $pd = mysqli_fetch_array($pq);
+                        echo "<tr>";
+                        echo "<td>{$_SESSION['username']}</td>";
+                         echo "<td>{$pd['vendor_name']}</td>";
+                         echo "<td>{$pd['vendor_price']}</td>";
+                              echo "<td><img src='../upload{$pd['vendor_photo']}' style='width:50px;'></td>";
+                         
+                        echo "</tr>";
+                        
+                    }
+            }
             ?>
+            
         </table>
                                     </div>
                                 </div>
@@ -292,11 +315,13 @@ WHERE (`tbl_booking`.`booking_id` ='{$_GET['pyd']}');";
                 }
             });
         });
-    </script>
-    <script>
+   
+  
        <?php 
-       $payment = $_GET['pyd'];
        
+       if(isset($_GET['pyd']))
+       {
+           $payment = $_GET['pyd'];
        echo " function myFunction() {
             setTimeout(function () {
                 swal({
@@ -308,6 +333,21 @@ WHERE (`tbl_booking`.`booking_id` ='{$_GET['pyd']}');";
                 });
             }, 1000);
         }";
+       }
+       else
+       {
+            echo " function myFunction() {
+            setTimeout(function () {
+                swal({
+                    title: 'Payment Gateway',
+                    text: 'Payment Successfully.',
+                    type: 'success'
+                }, function () {
+                    window.location = 'pymentprocess.php';
+                });
+            }, 1000);
+        }";
+       }
         ?>
     </script>
     

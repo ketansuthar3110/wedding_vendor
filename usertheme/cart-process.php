@@ -47,6 +47,11 @@ if(isset($_POST['wishlist']))
                     $_SESSION['counter'] = 0;
 
                 }
-                header("location:view-cart.php?lsid={$lastid}");
+               
+                
+               header("location:view-cart.php");
+                
+                
+                
 }
 ?>

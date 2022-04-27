@@ -4,13 +4,10 @@ $user = "root";
 $password = "";
 $database = "db_wedding";
 $connection = mysqli_connect($host, $user , $password, $database);
-session_start();
+
 
  
-if(!isset($_SESSION['userid']))
-{
-    header("location:login-page.php");
-}
+
 ?>
 <div class="collapse" id="searcharea">
         <!-- top search -->
@@ -26,7 +23,7 @@ if(!isset($_SESSION['userid']))
         <div class="container">
             <div class="row">
                 <div class="col-md-6 top-message">
-                    <p>Hi <?php echo $_SESSION['username']; ?> Welcome to Wedding Vendor</p>
+                    <p>Welcome to Wedding Vendor</p>
                     
                 </div>
                 <div class="col-md-6 top-links">
@@ -76,14 +73,28 @@ if(!isset($_SESSION['userid']))
                                                    ?>
                                 </ul>
                             </li>
-                            <li><a href="#">Account</a>
-                                <ul>
-                                    <li><a href="view-booking.php" title="Home" class="animsition-link">View order</a></li>
-                                    <li><a href="login-page.php" title="Home" class="animsition-link">Login</a></li>
-                                     <li><a href="change-password-user.php" title="Home" class="animsition-link">Change Password</a></li>
-                                      <li><a href="logout.php" title="Home" class="animsition-link">Logout</a></li>
-                                </ul>
-                            </li>
+                             <?php
+                                if(isset($_SESSION['username']))
+                                {
+                                  echo"<li><a href='#'>Hi.{$_SESSION['username']}</a>";
+                               
+                                
+                                 echo"<ul>";
+                                    echo"<li><a href='view-booking.php' title='Home'class='animsition-link'>View order</a></li>";
+                                    echo"<li><a href='login-page.php' title='Home' class='animsition-link'>Login</a></li>";
+                                     echo"<li><a href='change-password-user.php' title='Home' class='animsition-link'>Change Password</a></li>";
+                                      echo"<li><a href='logout.php' title='Home' class='animsition-link'>Logout</a></li>";
+                               echo" </ul>";
+                                }
+                                
+                                else
+                                {
+                                    echo "<li><a href='login-page.php'>Login</a></li>";
+                                }
+                                ?>
+                            
+                               
+                            <li><a href="view-cart.php"><i class="icon-bag"></i>Wishlist</a>
                             
                             
                         </ul>
