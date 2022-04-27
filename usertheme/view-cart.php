@@ -3,32 +3,8 @@ require './class/connection.php';
 
 
 session_start();
-if ($_POST) {
-    $name = $_POST['txt1'];
-    $mo = $_POST['txt2'];
-    $add = $_POST['txt3'];
-    $sid = $_SESSION['adminid'];
-    $cdate = date('d-m-y');
 
-    $oq = mysqli_query($connection, "insert into tbl_order(order_date,user_id,order_status,shipingname,shipingmobile,shipingadd)values('{$cdate}','{$sid}','pending','{$name}','{$mo}','{$add}')") or die(mysqli_error($connection));
 
-    $orderid = mysqli_insert_id($connection);
-
-    foreach ($_SESSION['vcart'] as $key => $value)
-    {
-        $pq = mysqli_query($connection, "select * from tbl_product where p_id = '{$value}' ") or die(mysqli_error($connection));
-        $pd = mysqli_fetch_array($pq);
-        
-          $orderdeq=mysqli_query($connection, "insert into order_details(order_id,p_id,p_price)values('{$orderid}','{$value}','{$pd['p_price']}')") or die(mysqli_error($connection));
-    
-          
-          }
-          unset($_SESSION['vcart']);
-          
-          unset($_SESSION['counter']);
-          
-          echo "<script>alert('thnaks for oder...')</script>";
-}
     ?>
 
 
