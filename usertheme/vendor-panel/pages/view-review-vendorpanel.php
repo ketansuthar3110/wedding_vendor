@@ -51,7 +51,7 @@ $dmsg = "";
                                                 <th scope="col">#</th>
                                                 <th scope="col">Date</th>
                                                 <th scope="col">Review-details</th>
-                                                <th scope="col">Vendor_name</th>
+                                                
                                                 <th scope="col">User-name</th>
 
 
@@ -88,7 +88,7 @@ $dmsg = "";
                                             echo "<td>{$data['review_id']}</td>";
                                             echo "<td>{$data['review_date']}</td>";
                                             echo "<td>{$data['review_details']}</td>";
-                                            echo "<td>{$data['vendor_name']}</td>";
+                                           
                                             echo "<td>{$data['user_name']}</td>";
 
                                             echo "</tr>";

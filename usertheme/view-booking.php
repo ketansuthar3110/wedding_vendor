@@ -3,32 +3,7 @@ require './class/connection.php';
 
 
 session_start();
-if ($_POST) {
-    $name = $_POST['txt1'];
-    $mo = $_POST['txt2'];
-    $add = $_POST['txt3'];
-    $sid = $_SESSION['adminid'];
-    $cdate = date('d-m-y');
 
-    $oq = mysqli_query($connection, "insert into tbl_order(order_date,user_id,order_status,shipingname,shipingmobile,shipingadd)values('{$cdate}','{$sid}','pending','{$name}','{$mo}','{$add}')") or die(mysqli_error($connection));
-
-    $orderid = mysqli_insert_id($connection);
-
-    foreach ($_SESSION['vcart'] as $key => $value)
-    {
-        $pq = mysqli_query($connection, "select * from tbl_product where p_id = '{$value}' ") or die(mysqli_error($connection));
-        $pd = mysqli_fetch_array($pq);
-        
-          $orderdeq=mysqli_query($connection, "insert into order_details(order_id,p_id,p_price)values('{$orderid}','{$value}','{$pd['p_price']}')") or die(mysqli_error($connection));
-    
-          
-          }
-          unset($_SESSION['vcart']);
-          
-          unset($_SESSION['counter']);
-          
-          echo "<script>alert('thnaks for oder...')</script>";
-}
     ?>
 
 
@@ -70,9 +45,9 @@ if ($_POST) {
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 profile-header">
-                        <div class="profile-pic col-md-2"><img src="images/profile-dashbaord.png" alt=""></div>
+                        <div class="profile-pic col-md-2"><img style="width: 100px;" src="images/user-icon.png" alt=""></div>
                         <div class="profile-info col-md-9">
-                            <h1 class="profile-title">Member Name<small>Welcome Back memeber</small></h1>
+                            <h1 class="profile-title"><?php echo "Hello ".  $_SESSION['username']; ?><small></small></h1>
                         </div>
                     </div>
                 </div>
@@ -84,11 +59,12 @@ if ($_POST) {
                 <div class="row">
                     <div class="col-md-12 dashboard-nav">
                         <ul class="nav nav-pills nav-justified">
-                            <li><a href="dashboard-vendor.php"><i class="fa fa-dashboard db-icon"></i>My Dashboard</a></li>
-                            <li><a href="dashboard-profile.php"><i class="fa fa-user db-icon"></i>My Profile</a></li>
-                            <li class="active"><a href="dashboard-my-listing.php"><i class="fa fa-list db-icon"></i>My Listing </a></li>
-                            <li><a href="dashboard-add-listing.php"><i class="fa fa-plus-square db-icon"></i>Add listing</a></li>
-                            <li><a href="dashboard-pricing.php"><i class="fa fa-list-alt db-icon"></i>Pricing Plan</a></li>
+                            
+                                     <li class=""><a href="user-profile.php"><i class="fa fa-user db-icon"></i>My Profile</a></li>
+                        <li><a href="view-cart.php"><i class="fa fa-heart db-icon"></i>My Wishlist </a></li>
+                        <li class="active"><a href="view-booking.php"><i class="fa fa-list db-icon"></i>My Booking</a></li>
+                                                <li class=""><a href="change-password-user.php">Change Password</a></li>
+
                         </ul>
                     </div>
                 </div>

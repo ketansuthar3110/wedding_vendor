@@ -41,7 +41,36 @@ session_start();
         <?php
         include './theme/header.php';
         ?>
-       
+       <div class="tp-dashboard-head">
+            <!-- page header -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 profile-header">
+                        <div class="profile-pic col-md-2"><img style="width: 100px;" src="images/user-icon.png" alt=""></div>
+                        <div class="profile-info col-md-9">
+                            <h1 class="profile-title"><?php echo "Hello ".  $_SESSION['username']; ?><small></small></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.page header -->
+        <div class="tp-dashboard-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 dashboard-nav">
+                        <ul class="nav nav-pills nav-justified">
+                            
+                                     <li class=""><a href="user-profile.php"><i class="fa fa-user db-icon"></i>My Profile</a></li>
+                        <li class="active"><a href="view-cart.php"><i class="fa fa-heart db-icon"></i>My Wishlist </a></li>
+                        <li><a href="view-booking.php"><i class="fa fa-list db-icon"></i>My Booking</a></li>
+                                                                        <li class=""><a href="change-password-user.php">Change Password</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="main-container">
             <div class="container">
                 <div class="row">
@@ -87,6 +116,7 @@ session_start();
                                 echo"</tr>";
                             echo"</thead>";
                                         $total=0;
+                                        
                                         foreach ($_SESSION['vcart'] as $key => $value)
                                         {
                                             $pq = mysqli_query($connection, "select * from tbl_vendormaster where vendor_id = '{$value}' ") or die (mysqli_error($connection));
@@ -101,19 +131,20 @@ session_start();
                                             $i++;
                                             $total= $pd['vendor_price']+$total;
                                         }
-                                       
+                                        echo "<tr style='background-color:lightblue;'><td colspan=2 style='padding-left: 10px;'><b>Subtotal :</b> </td><td><b>Rs.$total</b></td>";
+                                            echo "<td colspan=2><a href='payment.php'><button name='submit' class='btn btn-default btn-lg btn-block'>Checkout</button></a></td></tr>";
+                                            
                                         }
                                         else
                                         {
-                                            echo "cart is empty";
-                                            echo "<a href='vendor-listing-sidebar.php'>Book more</a>";
+                                            
+                                            echo "<center><h4>no records found</h4></center>";
+                                            
 
                                         }
                                         if(isset($_SESSION['userid'] ))
                                         {
-                                            echo "<tr style='background-color:lightblue;'><td colspan=2 style='padding-left: 10px;'><b>Subtotal :</b> </td><td><b>Rs.$total</b></td>";
-                                            echo "<td colspan=2><a href='payment.php'><button name='submit' class='btn btn-default btn-lg btn-block'>Checkout</button></a></td></tr>";
-                                            
+                                           
                                              echo "</table>";
                                         }
                                         

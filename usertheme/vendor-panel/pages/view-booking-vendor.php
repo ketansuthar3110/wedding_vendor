@@ -51,7 +51,7 @@ $dmsg = "";
                                                 <th scope="col">#</th>
                                                 <th scope="col">Date</th>
                                                 <th scope="col">User_name</th>
-                                                <th scope="col">Vendor_name</th>
+                                             
                                                 <th scope="col">Price</th>
                                                 <th scope="col">Status</th>
 
@@ -90,7 +90,7 @@ $dmsg = "";
                                             echo "<td>{$data['booking_id']}</td>";
                                             echo "<td>{$data['booking_date']}</td>";
                                             echo "<td>{$data['user_name']}</td>";
-                                            echo "<td>{$data['vendor_name']}</td>";
+                                           
                                             echo "<td>{$data['booking_price']}</td>";
                                             echo "<td>{$data['booking_status']}</td>";
 

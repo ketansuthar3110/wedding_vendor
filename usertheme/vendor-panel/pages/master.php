@@ -4,8 +4,8 @@ session_start();
 require '../../class/connection.php';
 
 $msg = "";
-$editid = $_GET['uid'];
-$up = mysqli_query($connection, "select * from tbl_vendormaster where vendor_id = '{$editid}'") or die(mysqli_error($connection));
+
+$up = mysqli_query($connection, "select * from tbl_vendormaster where vendor_id = '{$_SESSION['vendorid']}'") or die(mysqli_error($connection));
 
 $selectrow = mysqli_fetch_array($up);
 if ($_POST) {
@@ -18,8 +18,8 @@ if ($_POST) {
     $price = $_POST['txt7'];
     $mono = $_POST['txt8'];
     $email = $_POST['txt9'];
-    $pass = $_POST['txt10'];
-    $update = mysqli_query($connection, "update tbl_vendormaster set vendor_name = '{$name}',vendor_gender = '{$gender}',vendor_details = '{$details}',category_id = '{$catid}',area_id = '{$areaid}',vendor_photo = '{$pic}',vendor_price = '{$price}',vendor_mobileno = '{$mono}',vendor_email = '{$email}',vendor_password = '{$pass}' where vendor_id = '{$editid}'") or die(mysqli_error($connection));
+   
+    $update = mysqli_query($connection, "update tbl_vendormaster set vendor_name = '{$name}',vendor_gender = '{$gender}',vendor_details = '{$details}',category_id = '{$catid}',area_id = '{$areaid}',vendor_photo = '{$pic}',vendor_price = '{$price}',vendor_mobileno = '{$mono}',vendor_email = '{$email}', where vendor_id = '{$_SESSION['vendorid']}'") or die(mysqli_error($connection));
     if ($update) {
         move_uploaded_file($_FILES['txt6']['tmp_name'], $pic);
         $msg = '<div class="alert alert-success" role="alert">
@@ -52,7 +52,7 @@ if ($_POST) {
         <!-- ============================================================== -->
         <!-- main wrapper -->
         <!-- ============================================================== -->
-        <div class="dashboard-main-wrapper">
+        
             <!-- ============================================================== -->
             <!-- navbar -->
             <!-- ============================================================== -->
@@ -75,116 +75,122 @@ if ($_POST) {
             <!-- wrapper  -->
             <!-- ============================================================== -->
             <div class="dashboard-wrapper">
-                <div class="dashboard-ecommerce">
-                    <div class="container-fluid dashboard-content ">
+                
                         <!-- ============================================================== -->
                         <!-- pageheader  -->
                         <!-- ============================================================== -->
-                        <div class="row">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="page-header">
-                                    <h2 class="pageheader-title">Dashboard</h2>
-                                    <p class="pageheader-text"></p>
-                                    <div class="page-breadcrumb">
+                        <h3>Personal Details</h3>
+                        
+                             <div class="col-12 mt-5">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="header-title">Vendor Details</h4>
+                                            <?php
+                                            echo $msg;
+                                            ?>
+                                            <div class="card-body">
+                                                <form method="post" enctype="multipart/form-data" >
+                                                    <div class="form-group">
+                                                        <label for="inputText3" class="col-form-label">Vendor name</label>
+                                                        <input id="inputText3" type="text"  value= "<?php echo $selectrow['vendor_name']; ?>" class="form-control" name="txt1">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputText3" class="col-form-label">Vendor Gender</label>
+                                                        <select name="txt2" class="form-control"  value= "<?php echo $selectrow['vendor_gender']; ?>">
+                                                            <option>Male</option>
+                                                            <option>Female</option>     
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1">Vendor Details</label>
+                                                        <textarea class="form-control" id="exampleFormControlTextarea1"   name="txt3" rows="3"><?php echo $selectrow['vendor_details']; ?></textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputText3" class="col-form-label">Category-name</label>
+                                                        <?php
+                                                        $selectcatrow = mysqli_query($connection, "select * from tbl_category") or die(mysqli_error($connection));
 
+                                                        echo"<select name='txt4' class='form-control'>";
+                                                        echo "";
+                                                        while ($selectcatrowfetch = mysqli_fetch_array($selectcatrow)) {
+
+                                                            echo "<option value='{$selectcatrowfetch['category_id']}'>{$selectcatrowfetch['category_name']}</option>";
+                                                        }
+                                                        echo"</select>";
+                                                        ?>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputText3" class="col-form-label">Area-name</label>
+                                                        <?php
+                                                        $selectarearow = mysqli_query($connection, "select * from tbl_area") or die(mysqli_error($connection));
+
+                                                        echo"<select name='txt5' class='form-control'>";
+                                                        
+                                                        while ($selectarearowfetch = mysqli_fetch_array($selectarearow)) {
+
+                                                            echo "<option value='{$selectarearowfetch['area_id']}'>{$selectarearowfetch['area_name']}</option>";
+                                                        }
+                                                        echo"</select>";
+                                                        ?>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="inputText3" class="col-form-label">Vendor photo</label><br>
+                                                            <?php 
+                                                            $i = mysqli_query($connection,"select * from tbl_image where vendor_id = '{$_SESSION['vendorid']}'");
+                                                                    while($img = mysqli_fetch_array($i))
+                                                            {
+                                                                
+                                                                print "<img style = 'width:150px;' src='../../../upload{$img['image']}'>  ";
+                                                             }
+                                                            ?>
+                                                           
+                                                            <input id="inputText3" type="file"  value= "<?php echo $selectrow['vendor_photo']; ?>" class="form-control" name="txt6">
+
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="inputText3" class="col-form-label">Vendor Price</label>
+                                                            <input id="inputText3" type="text"  value= "<?php echo $selectrow['vendor_price']; ?>" class="form-control" name="txt7">
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="inputText4" class="col-form-label">Vendor Mobile</label>
+                                                            <input id="inputText4" type="number" class="form-control"  value= "<?php echo $selectrow['vendor_mobileno']; ?>" name="txt8" placeholder="Numbers">
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="inputEmail">Vendor Email</label>
+                                                            <input id="inputEmail" type="email" name="txt9"  value= "<?php echo $selectrow['vendor_email']; ?>" placeholder="name@example.com" class="form-control">
+
+                                                        </div>
+
+                                                   
+
+                                                        <div class="card-footer"> 
+                                                            <button type="submit" class="btn btn-success btn-sm">Update Record</button> 
+                                                           
+                                                        </div> 
+                                                </form>
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        
-                        <?php
-                        if (isset($_GET['did'])) {
-                            $delid = $_GET['did'];
-                            $dq = mysqli_query($connection, "delete from tbl_vendormaster where vendor_id = '{$delid}'") or die(mysqli_error($connection));
-                            if ($dq) {
-                                $dmsg = '<div class="alert alert-danger" role="alert">
-                         Record Deleted
-                        </div>';
-                            }
-                            echo $dmsg;
-                        }
-                        $sql = "SELECT
-                                                `tbl_vendormaster`.`vendor_id`
-                                                , `tbl_vendormaster`.`vendor_name`
-                                                , `tbl_vendormaster`.`vendor_gender`
-                                                , `tbl_vendormaster`.`vendor_details`
-                                                , `tbl_category`.`category_name`
-                                                , `tbl_area`.`area_name`
-                                                , `tbl_vendormaster`.`vendor_photo`
-                                                , `tbl_vendormaster`.`vendor_price`
-                                                , `tbl_vendormaster`.`vendor_mobileno`
-                                                , `tbl_vendormaster`.`vendor_email`
-                                            FROM
-                                                `tbl_area`
-                                                INNER JOIN `tbl_vendormaster` 
-                                                    ON (`tbl_area`.`area_id` = `tbl_vendormaster`.`area_id`)
-                                                INNER JOIN `tbl_category` 
-                                                    ON (`tbl_category`.`category_id` = `tbl_vendormaster`.`category_id`)
-                                            WHERE (`tbl_vendormaster`.`vendor_id` ='{$_SESSION['vendorid']}')";
-                        $join = mysqli_query($connection, $sql) or die(mysqli_error($connection));
-                        echo "<table>";
-
-                        while ($data = mysqli_fetch_array($join)) {
-                            echo "<tr>";
-                            echo "<td>Name<td>";
-                            echo "<td>{$data['vendor_name']}</td>";
-                            echo "</tr>";
-                            echo "<tr>";
-                            echo "<td>Gender</td>";
-                            echo "<td>{$data['vendor_gender']}</td>";
-                            echo "</tr>";
-                            echo "<tr>";
-                            echo "<td>Details</td>";
-                            echo "<td>{$data['vendor_details']}</td>";
-                            echo "</tr>";
-                            echo"<tr>";
-                            echo "<td>Category</td>";
-                            echo "<td>{$data['category_name']}</td>";
-                            echo "</tr>";
-                            echo "<td>Area</td>";
-                            echo "<td>{$data['area_name']}</td>";
-                            echo "<tr>";
-                            echo "</tr>";
-                            echo "<td>image</td>";
-                            echo "<td><img style = 'width:150px;'src='{$data['vendor_photo']}'</td>";
-                            echo "<tr>";
-
-                            echo "</tr>";
-                            echo "<td>price</td>";
-                            echo "<td>{$data['vendor_price']}</td>";
-
-                            echo "<tr>";
-                            echo "<td>Mobile</td>";
-                            echo "<td>{$data['vendor_mobileno']}</td>";
-
-                            echo "</tr>";
-                            echo "<tr>";
-                            echo "<td>email</td>";
-                            echo "<td>{$data['vendor_email']}</td>";
-
-                            echo "</tr>";
-                        }
-                        echo "<td><button><a style='color:blue;' href='edit-vendor.php?uid=$data[0]'>Update</a></button></td>";
-                        echo "</table>";
-                        ?>
 
                     </div>
-                </div>
+               
                 
                 <!-- ============================================================== -->
                 <!-- footer -->
                 <!-- ============================================================== -->
-                <?php
-                include '../pages/theme/footer.php';
-                ?>
+               
                 <!-- ============================================================== -->
                 <!-- end footer -->
                 <!-- ============================================================== -->
-            </div>
+            
             <!-- ============================================================== -->
             <!-- end wrapper  -->
             <!-- ============================================================== -->
-        </div>
+     
         <!-- ============================================================== -->
         <!-- end main wrapper  -->
         <!-- ============================================================== -->

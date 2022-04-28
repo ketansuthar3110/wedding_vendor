@@ -82,38 +82,42 @@ if ($_POST) {
     <?php
     include './theme/header.php';
     ?>
-    <div class="tp-page-head">
-        <!-- page header -->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-offset-2 col-md-8">
-                    <div class="page-header text-center">
-                        <div class="icon-circle">
-                            <i class="icon icon-size-60 icon-padlock-1 icon-white"></i>
+   <div class="tp-dashboard-head">
+            <!-- page header -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 profile-header">
+                        <div class="profile-pic col-md-2"><img style="width: 100px;" src="images/user-icon.png" alt=""></div>
+                        <div class="profile-info col-md-9">
+                            <h1 class="profile-title"><?php echo "Hello ".  $_SESSION['username']; ?><small></small></h1>
                         </div>
-                        <h1>Reset your password?</h1>
-                        <p>Have you change your password? Please provide the details of your password. password will change automatically.  </p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- /.page header -->
-    <div class="tp-breadcrumb">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <ol class="breadcrumb">
-                        <li><a href="#">Home</a></li>
-                        <li class="active">Forget Page</li>
-                    </ol>
+        <!-- /.page header -->
+        <div class="tp-dashboard-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 dashboard-nav">
+                        <ul class="nav nav-pills nav-justified">
+                            
+                                     <li class=""><a href="user-profile.php"><i class="fa fa-user db-icon"></i>My Profile</a></li>
+                        <li class=""><a href="view-cart.php"><i class="fa fa-heart db-icon"></i>My Wishlist </a></li>
+                        <li><a href="view-booking.php"><i class="fa fa-list db-icon"></i>My Booking</a></li>
+                                                                        <li class="active"><a href="change-password-user.php">Change Password</a></li>
+
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     <div class="main-container">
         <div class="container">
-            <div class="col-md-offset-3 col-md-6 well-box">
+            <div class="page-header">
+                                <h1>Change Your Password</h1>
+                            </div>
+            <div class="col-md-offset-0 col-md-12 well-box">
                 <form method="post">
                     <!-- Text input-->
                     <div class="form-group">

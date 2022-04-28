@@ -15,13 +15,13 @@
                                        
                     
                                    
-                            <li class="nav-divider">
-                                <a href ="master.php" class="nav-link"> Dashboard</a>
-                                <a href ="view-booking-vendor.php" class="nav-link"> View Booking</a>
-                                <a href ="view-review-vendorpanel.php" class="nav-link"> View User Review</a>
-                                 <a href ="change-pass-vendor.php" class="nav-link"> Change Password</a>
-                                 <a href ="logout-vendor.php" class="nav-link"> Logout</a>
-                            </li>
+                            
+                            <a href ="master.php" class="nav-link" style="color: #ffffff;font-size: 18px;"><i class="fa fa-user db-icon"></i> Dashboard</a>
+                                <a href ="view-booking-vendor.php" class="nav-link"style="color: #ffffff;font-size: 18px;"><i class="fa fa-list db-icon"></i> View Booking</a>
+                                <a href ="view-review-vendorpanel.php" class="nav-link"style="color: #ffffff;font-size: 18px;"> <i class="fa fa-heart db-icon"></i>View User Review</a>
+                                 <a href ="change-pass-vendor.php" class="nav-link"style="color: #ffffff;font-size: 18px;"><i class="fa fa-table db-icon"></i> Change Password</a>
+                                 <a href ="logout-vendor.php" class="nav-link"style="color: #ffffff;font-size: 18px;"><i class="fa fa-table db-icon"></i> Logout</a>
+                            
                         
                             
                         
