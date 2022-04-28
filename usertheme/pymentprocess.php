@@ -9,7 +9,9 @@ session_start();
         $pyd = $_GET['id'];
     
                 $update=mysqli_query($connection,"update tbl_booking set booking_status = 'Booked' where booking_id = '{$pyd}'") or die (mysqli_error($connection));
-                 if($update)
+                $updatepayment=mysqli_query($connection,"update tbl_payment set payment_status = 'successful' where booking_id = '{$pyd}'") or die (mysqli_error($connection));
+ 
+                if($update)
                  {
                      echo "<script>alert('Vendor Booked successfully')</script>";
                      //header("location:index.php");
@@ -24,7 +26,9 @@ session_start();
      
                 
                        $update=mysqli_query($connection,"update tbl_booking set booking_status = 'Booked' where user_id = '{$_SESSION['userid']}'") or die (mysqli_error($connection));
-                        unset($_SESSION['vcart']);
+                       $updatepayment=mysqli_query($connection,"update tbl_payment set payment_status = 'successful' where user_id = '{$_SESSION['userid']}'") or die (mysqli_error($connection));
+
+                       unset($_SESSION['vcart']);
   
                         unset($_SESSION['counter']);
                        header("location:index.php");

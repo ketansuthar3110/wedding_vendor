@@ -10,10 +10,10 @@ if(isset($_POST['booknow']))
                   $vid = $pid;
                   $bprice = $_POST['txt4'];
                   $bstatus = "pending";
-
                   $i = mysqli_query($connection, "insert into tbl_booking(booking_date,user_id,vendor_id,booking_price,booking_status)values('{$date}','{$userid}','{$vid}','{$bprice}','{$bstatus}')") or die(mysqli_error($connection));
                   $lastid = mysqli_insert_id($connection);
-                  $ordet = mysqli_query($connection,"insert into tbl_booking_details(booking_id,booking_date,user_id,vendor_id,booking_price)values('{$lastid}','{$date}','{$userid}','{$vid}','{$bprice}')") or die(mysqli_error($connection));
+                  $p = mysqli_query($connection, "insert into tbl_payment(booking_id,user_id,vendor_id,transaction_id,booking_price,payment_status) values ('{$lastid}','{$userid}','{$vid}','12110','{$bprice}','pending')") or die(mysqli_error($connection));
+
                   if ($i) {
 
                       header("location:payment.php?pyd={$lastid}");
@@ -29,6 +29,7 @@ if(isset($_POST['wishlist']))
 
     $i = mysqli_query($connection, "insert into tbl_booking(booking_date,user_id,vendor_id,booking_price,booking_status)values('{$date}','{$userid}','{$vid}','{$bprice}','{$bstatus}')") or die(mysqli_error($connection));
     $lastid = mysqli_insert_id($connection);
+    $p = mysqli_query($connection, "insert into tbl_payment(booking_id,user_id,vendor_id,transaction_id,booking_price,payment_status) values ('{$lastid}','{$userid}','{$vid}','12110','{$bprice}','pending')") or die(mysqli_error($connection));
                 if(isset($_SESSION['vcart']))
                 {
                     $cnum = $_SESSION['counter']+1;

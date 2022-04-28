@@ -177,7 +177,7 @@ session_start();
         </div>
 
 
-        <div class="section-space80 bg-light">
+        <div class="section-space80">
             <!-- Testimonial Section -->
             <div class="container">
                 <div class="row">
@@ -237,7 +237,7 @@ session_start();
 
 
 <!-- /. Testimonial Section -->
-<div class="section-space80">
+<div class="section-space80 bg-light">
     <!-- Call to action -->
     <div class="container">
         <div class="row">

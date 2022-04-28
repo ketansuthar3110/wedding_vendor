@@ -84,6 +84,7 @@ if (isset ($_POST['search']))
                         ?>
                     </ul>
                 </li>
+                <li>
                 <?php
                 if (isset($_SESSION['username'])) {
                     echo"<li><a href='#'>Hi.{$_SESSION['username']}</a>";
@@ -98,7 +99,8 @@ if (isset ($_POST['search']))
                     echo "<li><a href='login-page.php'>Login</a></li>";
                 }
                 ?>
-
+                </li>
+                <li>
                 <?php
                 if(isset($_SESSION['username']))
                 {
@@ -106,7 +108,7 @@ if (isset ($_POST['search']))
                 }
                         ?>
                         
-
+</li>
 
             </ul>
         </div>

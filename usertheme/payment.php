@@ -132,7 +132,7 @@ WHERE (`tbl_booking`.`booking_id` ='{$_GET['pyd']}');";
                             <b>
                                 <div class="tab-content" id="vert-tabs-tabContent">
 
-                                    <div class="tab-pane fade" id="vert-tabs-profile" role="tabpanel"
+                                    <div class="tab-pane fade show active" id="vert-tabs-profile" role="tabpanel"
                                          aria-labelledby="vert-tabs-profile-tab">
                                         <table class="table table-borderless">
                                             <input hidden name="payment_method" value="Bank-Transfer" hidden>

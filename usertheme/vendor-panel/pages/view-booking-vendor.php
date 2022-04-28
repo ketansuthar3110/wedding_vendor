@@ -53,7 +53,8 @@ $dmsg = "";
                                                 <th scope="col">User_name</th>
                                              
                                                 <th scope="col">Price</th>
-                                                <th scope="col">Status</th>
+                                                <th scope="col">Booking_Status</th>
+                                                <th scope="col">Payment_Status</th>
 
                                                
                                             </tr>
@@ -69,20 +70,22 @@ $dmsg = "";
                                             }
                                         }
                                         $sql = "SELECT
-                            `tbl_booking`.`booking_id`
-                            , `tbl_booking`.`booking_date`
-                            , `tbl_user`.`user_name`
-                            , `tbl_vendormaster`.`vendor_name`
-                            , `tbl_booking`.`booking_price`
-                            , `tbl_booking`.`booking_status`
-                            FROM
-                            `tbl_user`
-                            INNER JOIN `tbl_booking`
-                            ON(`tbl_user`.`user_id` = `tbl_booking`.`user_id`)
-                                            INNER JOIN `tbl_vendormaster`
-                                            ON(`tbl_vendormaster`.`vendor_id` = `tbl_booking`.`vendor_id`)
-                                            WHERE(`tbl_vendormaster`.`vendor_id` = '{$_SESSION['vendorid']}')
-                                            ORDER BY `tbl_booking`.`booking_id` ASC;";
+    `tbl_booking`.`booking_id`
+    , `tbl_booking`.`booking_date`
+    , `tbl_user`.`user_name`
+    , `tbl_booking`.`booking_price`
+    , `tbl_booking`.`booking_status`
+    , `tbl_payment`.`payment_status`
+FROM
+    `tbl_vendormaster`
+    INNER JOIN `tbl_booking` 
+        ON (`tbl_vendormaster`.`vendor_id` = `tbl_booking`.`vendor_id`)
+    INNER JOIN `tbl_payment` 
+        ON (`tbl_booking`.`booking_id` = `tbl_payment`.`booking_id`)
+    INNER JOIN `tbl_user` 
+        ON (`tbl_user`.`user_id` = `tbl_booking`.`user_id`)
+WHERE (`tbl_vendormaster`.`vendor_id` ='{$_SESSION['vendorid']}')
+ORDER BY `tbl_booking`.`booking_id` ASC;";
                                         
                                         $f =mysqli_query($connection, $sql) or die(mysqli_error($connection));
                                                 while ($data = mysqli_fetch_array($f)) {
@@ -93,6 +96,7 @@ $dmsg = "";
                                            
                                             echo "<td>{$data['booking_price']}</td>";
                                             echo "<td>{$data['booking_status']}</td>";
+                                            echo "<td>{$data['payment_status']}</td>";
 
                                             echo "</tr>";
                                         }

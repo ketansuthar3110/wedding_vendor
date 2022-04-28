@@ -76,44 +76,36 @@ $cid = "";
                         <div class="col-md-12 form-title">
                             <h2>Refine Your Search</h2>
                         </div>
-                        <form>
+                        <form metho="get">
                             <div class="col-md-12 form-group">
-                                <label class="control-label" for="venuetype">Vendor Type</label>
-                                <select id="venuetype" name="venuetype" class="form-control">
-                                    <option value="">Select Venue</option>
-                                    <option value="Barn">Barn</option>
-                                    <option value="Boutique">Boutique</option>
-                                    <option value="Castle">Castle</option>
-                                    <option value="Country House">Country House</option>
-                                    <option value="Exclusive use">Exclusive use</option>
-                                    <option value="Garden weddings">Garden weddings</option>
-                                    <option value="Gay friendly">Gay friendly</option>
-                                    <option value="Gothic">Gothic</option>
-                                    <option value="Hotel">Hotel</option>
-                                    <option value="Intimate">Intimate</option>
-                                    <option value="Manor House">Manor House</option>
-                                    <option value="Marquee">Marquee</option>
-                                    <option value="Minimalist">Minimalist</option>
-                                    <option value="Modern">Modern</option>
-                                    <option value="Outside Weddings">Outside Weddings</option>
-                                    <option value="Palace">Palace</option>
-                                    <option value="Private School">Private School</option>
-                                    <option value="Romantic">Romantic</option>
-                                    <option value="Small">Small</option>
-                                    <option value="Waterside">Waterside</option>
-                                    <option value="Weekend">Weekend</option>
+                                <label class="control-label" for="venuetype">Vendor Category</label>
+                                <select id="venuetype" name="catid" class="form-control">
+                                    <?php
+                                                $selectcatrow = mysqli_query($connection, "select * from tbl_category") or die(mysqli_error($connection));
+
+                                                echo "<option>Select category name</option>";
+                                                while ($selectcatrowfetch = mysqli_fetch_array($selectcatrow)) {
+
+                                                    echo "<option value='{$selectcatrowfetch['category_id']}'>{$selectcatrowfetch['category_name']}</option>";
+                                                }
+                                                echo"</select>";
+                                                ?> 
+                                    
                                 </select>
                             </div>
                          
                             <div class="col-md-12 form-group">
-                                <label class="control-label" for="price">Price</label>
-                                <select id="price" name="price" class="form-control">
-                                    <option value=""> Select Price</option>
-                                    <option value="$35 - $50">$35 - $50</option>
-                                    <option value="$50 - $60">$50 - $60</option>
-                                    <option value="$60 - $70">$60 - $70</option>
-                                    <option value="$70 - $80">$70 - $80</option>
-                                    <option value="$80 - $90">$80 - $90</option>
+                                <label class="control-label" for="price">Area</label>
+                                <select id="price" name="areaid" class="form-control">
+                                    <?php
+                                                $selectarearow = mysqli_query($connection, "select * from tbl_area") or die(mysqli_error($connection));
+
+                                                echo "<option>Select area name</option>";
+                                                while ($selectarearowfetch = mysqli_fetch_array($selectarearow)) {
+
+                                                    echo "<option value='{$selectarearowfetch['area_id']}'>{$selectarearowfetch['area_name']}</option>";
+                                                }
+                                                ?>
                                 </select>
                             </div>
                             
@@ -140,7 +132,7 @@ $cid = "";
 
 
 
-                                                 echo "<div class='col-md-6 vendor-box'>";
+                                                 echo "<div class='col-md-4 vendor-box'>";
 
                                                          echo"       <div class='vendor-image'>";
 
@@ -153,7 +145,7 @@ $cid = "";
                                                                 echo"<div class='caption'>";
 
                                                                             echo" <h2><a href='# 'class='title'>{$data['vendor_name']}</a></h2>";
-                                                                            echo" <p class='location'><i class='fa fa-arrow-right'></i> {$data['vendor_details']}</p>";
+                                                                          //  echo" <p class='location'><i class='fa fa-arrow-right'></i> {$data['vendor_details']}</p>";
                                                                             echo"<p class='location'><i class='fa fa-mobile'></i> Mo.{$data['vendor_mobileno']}</p>";
                                                               echo"<div class='rating'> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star-o'></i> <span class='rating-count'>(22)</span> </div>";
                                                               echo"</div>";
@@ -178,7 +170,7 @@ $cid = "";
 
 
 
-                                         echo "<div class='col-md-6 vendor-box'>";
+                                         echo "<div class='col-md-4 vendor-box'>";
 
                                                  echo"       <div class='vendor-image'>";
 
@@ -191,7 +183,7 @@ $cid = "";
                                                         echo"<div class='caption'>";
 
                                                                     echo" <h2><a href='# 'class='title'>{$data['vendor_name']}</a></h2>";
-                                                                    echo" <p class='location'><i class='fa fa-map-marker'></i> {$data['vendor_details']}</p>";
+                                                                  //  echo" <p class='location'><i class='fa fa-map-marker'></i> {$data['vendor_details']}</p>";
                                                                     echo"<p class='location'><i class='fa fa-map-marker'></i> Mo.{$data['vendor_mobileno']}</p>";
                                                       echo"<div class='rating'> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star-o'></i> <span class='rating-count'>(22)</span> </div>";
                                                       echo"</div>";
@@ -215,7 +207,7 @@ $cid = "";
 
 
 
-                                                 echo "<div class='col-md-6 vendor-box'>";
+                                                 echo "<div class='col-md-4 vendor-box'>";
 
                                                          echo"       <div class='vendor-image'>";
 
@@ -228,7 +220,7 @@ $cid = "";
                                                                 echo"<div class='caption'>";
 
                                                                             echo" <h2><a href='# 'class='title'>{$data['vendor_name']}</a></h2>";
-                                                                            echo" <p class='location'><i class='fa fa-arrow-right'></i> {$data['vendor_details']}</p>";
+                                                                          //  echo" <p class='location'><i class='fa fa-arrow-right'></i> {$data['vendor_details']}</p>";
                                                                             echo"<p class='location'><i class='fa fa-mobile'></i> Mo.{$data['vendor_mobileno']}</p>";
                                                               echo"<div class='rating'> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star-o'></i> <span class='rating-count'>(22)</span> </div>";
                                                               echo"</div>";
