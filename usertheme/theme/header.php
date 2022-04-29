@@ -87,7 +87,7 @@ if (isset ($_POST['search']))
                 <li>
                 <?php
                 if (isset($_SESSION['username'])) {
-                    echo"<li><a href='#'>Hi.{$_SESSION['username']}</a>";
+                    echo"<li><a href='user-profile.php'><i>Hello</i>  {$_SESSION['username']}</a>";
 
                     echo"<ul>";
                     echo"<li><a href='view-booking.php' title='Home'class='animsition-link'>View order</a></li>";

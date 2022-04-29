@@ -92,7 +92,7 @@ include './theme/header.php';
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="page-title">
-                                        <h1>Account Details <small>Change your personal profile</small></h1>
+                                        <h1>User Profile <small>Change your personal profile</small></h1>
                                     </div>
                                 </div>
                                 

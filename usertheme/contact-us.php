@@ -117,7 +117,7 @@ if ($_POST) {
                             <div class="form-group">
                                 <label class=" control-label" for="category">Category <span class="required">*</span></label>
                                 <select id="category" name="txt5" class="form-control selectpicker">
-                                    <option value="Couple">Couple</option>
+                                    <option value="Couple">User</option>
                                     <option value="Vendor">Vendor</option>
                                     
                                 </select>

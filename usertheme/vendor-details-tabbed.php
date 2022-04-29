@@ -109,14 +109,12 @@ if ($_POST) {
                     <div class="col-md-4 venue-data">
                         <div class="venue-info">
                             <!-- venue-info-->
-                            <div class="capacity">
-                                <div>Capacity:</div>
-                                <span class="cap-people"> 50 - 300 </span> </div>
+                            
                             <div class="pricebox">
                                 <div>Avg price:</div>
                                 <span class="price"><?php echo "Rs . {$data1['vendor_price']}"; ?></span></div>
                         </div>
-                        <a href="#inquiry" class="btn btn-default btn-lg btn-block">Book Venue</a> </div>
+                        <a href="#inquiry" class="btn btn-default btn-lg btn-block">Book Vendor</a> </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">

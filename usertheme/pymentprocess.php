@@ -13,8 +13,8 @@ session_start();
  
                 if($update)
                  {
-                     echo "<script>alert('Vendor Booked successfully')</script>";
-                     //header("location:index.php");
+                     
+                    header("location:index.php");
                  }
                  else
                  {

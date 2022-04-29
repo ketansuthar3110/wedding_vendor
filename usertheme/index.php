@@ -243,14 +243,14 @@ session_start();
         <div class="row">
             <div class="col-md-6 couple-block">
                 <div class="couple-icon"><img src="images/couple.svg" alt=""></div>
-                <h2>Are you couple find the venue ?</h2>
+                <h2>Are you find the vendor ?</h2>
                 <p></p>
-                <a href="#" class="btn btn-primary">Find Vendor</a> </div>
+                <a href="vendor-listing-sidebar.php" class="btn btn-primary">Find Vendor</a> </div>
             <div class="col-md-6 vendor-block">
                 <div class="vendor-icon"><img src="images/vendor.svg" alt=""></div>
                 <h2>Are you wedding vender ?</h2>
                 <p></p>
-                <a href="#" class="btn btn-primary">Create Account As Vendor</a></div>
+                <a href="./vendor-panel/pages/login-vendor.php" class="btn btn-primary">Create Account As Vendor</a></div>
         </div>
     </div>
 </div>
