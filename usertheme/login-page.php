@@ -14,7 +14,7 @@ if ($_POST) {
         $_SESSION['username'] = $row['user_name'];
         header("location:index.php");
     } else {
-        echo "email or password not match";
+        echo "<script>alert('Login Fail : email or password not match')</script>";
     }
 }
 ?>
@@ -102,16 +102,16 @@ if ($_POST) {
                         <!-- Nav tabs -->
                         <div class="well-box">
                             <h3>User Login</h3>
-                            <form method="post" id="myform">
+                            <form method="post" id="">
                                 <!-- Text input-->
                                 <div class="form-group">
                                     <label class="control-label" for="email">E-mail<span class="required">*</span></label>
-                                    <input id="email" name="email" type="text" placeholder="E-Mail" class="form-control input-md" required>
+                                    <input id="email" name="email" type="email" placeholder="E-Mail" class="form-control input-md" required>
                                 </div>
                                 <!-- Text input-->
                                 <div class="form-group">
                                     <label class="control-label" for="password">Password<span class="required">*</span></label>
-                                    <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" required>
+                                    <input id="password" name="password" type="password"  placeholder="Password" class="form-control input-md" required>
                                 </div>
 
                                 <!-- Button -->

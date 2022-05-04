@@ -90,7 +90,8 @@ if (isset ($_POST['search']))
                     echo"<li><a href='user-profile.php'><i>Hello</i>  {$_SESSION['username']}</a>";
 
                     echo"<ul>";
-                    echo"<li><a href='view-booking.php' title='Home'class='animsition-link'>View order</a></li>";
+                     echo"<li><a href='user-profile.php' title='Home'class='animsition-link'>My Profile</a></li>";
+                    echo"<li><a href='view-booking.php' title='Home'class='animsition-link'>My Booking</a></li>";
 
                     echo"<li><a href='change-password-user.php' title='Home' class='animsition-link'>Change Password</a></li>";
                     echo"<li><a href='logout.php' title='Home' class='animsition-link'>Logout</a></li>";
