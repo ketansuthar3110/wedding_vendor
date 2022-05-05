@@ -231,48 +231,7 @@ if ($_POST) {
                                                             <?php echo $msgr; ?>
 
                                                             <input type="hidden" name="pid" value="<?php echo $vid; ?>">
-                                                            <!-- Text input-->
-                                                            <div class="form-group">
-                                                                <label class="control-label" for="name">Name</label>
-                                                                <div class="">
-                                                                    <?php
-                                                                    $selectcatrow = mysqli_query($connection, "select * from tbl_user") or die(mysqli_error($connection));
-
-                                                                    echo"<select name='uname' class='form-control input-md' reqiured>";
-                                                                    echo "<option hidden>Select user name</option>";
-                                                                    while ($selectcatrowfetch = mysqli_fetch_array($selectcatrow)) {
-
-                                                                        echo "<option value='{$selectcatrowfetch['user_id']}'>{$selectcatrowfetch['user_name']}</option>";
-                                                                    }
-                                                                    echo"</select>";
-                                                                    ?> 
-                                                                </div>
-                                                            </div>
-                                                            <!-- Text input-->
-                                                            <div class="form-group">
-                                                                <label class="control-label" for="email">Vendor name</label>
-                                                                <div class=" ">
-                                                                    <?php
-                                                                    $selectcatrow = mysqli_query($connection, "select * from tbl_vendormaster") or die(mysqli_error($connection));
-
-                                                                    echo"<select name='vname' class='form-control input-md'>";
-                                                                    echo "<option hidden>Select vendor name</option>";
-                                                                    while ($selectcatrowfetch = mysqli_fetch_array($selectcatrow)) {
-
-                                                                        echo "<option value='{$selectcatrowfetch['vendor_id']}'>{$selectcatrowfetch['vendor_name']}</option>";
-                                                                    }
-                                                                    echo"</select>";
-                                                                    ?> 
-                                                                </div>
-                                                            </div>
-                                                            <!-- Text input-->
-                                                            <div class="form-group">
-                                                                <label class=" control-label" for="reviewtitle">Review date</label>
-                                                                <div class=" ">
-                                                                    <input id="reviewtitle" name="rdate" type="date" placeholder="Review Title" class="form-control input-md" required>
-                                                                </div>
-                                                            </div>
-                                                            <!-- Textarea -->
+                                                         
                                                             <div class="form-group">
                                                                 <label class=" control-label">Write Review</label>
                                                                 <div class="">
